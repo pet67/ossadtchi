@@ -1,0 +1,262 @@
+[
+    {
+        "name": "all",
+        "channels": "all"
+    },
+    {
+        "name": "single_0",
+        "channels": [0]
+    },
+    {
+        "name": "single_1",
+        "channels": [1]
+    },
+    {
+        "name": "single_2",
+        "channels": [2]
+    },
+    {
+        "name": "single_3",
+        "channels": [3]
+    },
+    {
+        "name": "single_4",
+        "channels": [4]
+    },
+    {
+        "name": "single_5",
+        "channels": [5]
+    },
+    {
+        "name": "single_6",
+        "channels": [6]
+    },
+    {
+        "name": "single_7",
+        "channels": [7]
+    },
+    {
+        "name": "single_8",
+        "channels": [8]
+    },
+    {
+        "name": "single_9",
+        "channels": [9]
+    },
+    {
+        "name": "single_10",
+        "channels": [10]
+    },
+    {
+        "name": "single_11",
+        "channels": [11]
+    },
+    {
+        "name": "single_12",
+        "channels": [12]
+    },
+    {
+        "name": "single_13",
+        "channels": [13]
+    },
+    {
+        "name": "single_14",
+        "channels": [14]
+    },
+    {
+        "name": "single_15",
+        "channels": [15]
+    },
+    {
+        "name": "single_16",
+        "channels": [16]
+    },
+    {
+        "name": "single_17",
+        "channels": [17]
+    },
+    {
+        "name": "single_18",
+        "channels": [18]
+    },
+    {
+        "name": "single_19",
+        "channels": [19]
+    },
+    {
+        "name": "single_20",
+        "channels": [20]
+    },
+    {
+        "name": "single_21",
+        "channels": [21]
+    },
+    {
+        "name": "single_22",
+        "channels": [22]
+    },
+    {
+        "name": "single_23",
+        "channels": [23]
+    },
+    {
+        "name": "single_24",
+        "channels": [24]
+    },
+    {
+        "name": "single_25",
+        "channels": [25]
+    },
+    {
+        "name": "single_26",
+        "channels": [26]
+    },
+    {
+        "name": "single_27",
+        "channels": [27]
+    },
+    {
+        "name": "single_28",
+        "channels": [28]
+    },
+    {
+        "name": "single_29",
+        "channels": [29]
+    },
+    {
+        "name": "single_30",
+        "channels": [30]
+    },
+    {
+        "name": "single_31",
+        "channels": [31]
+    },
+    {
+        "name": "single_32",
+        "channels": [32]
+    },
+    {
+        "name": "single_33",
+        "channels": [33]
+    },
+    {
+        "name": "single_34",
+        "channels": [34]
+    },
+    {
+        "name": "single_35",
+        "channels": [35]
+    },
+    {
+        "name": "single_36",
+        "channels": [36]
+    },
+    {
+        "name": "single_37",
+        "channels": [37]
+    },
+    {
+        "name": "single_38",
+        "channels": [38]
+    },
+    {
+        "name": "single_39",
+        "channels": [39]
+    },
+    {
+        "name": "single_40",
+        "channels": [40]
+    },
+    {
+        "name": "single_41",
+        "channels": [41]
+    },
+    {
+        "name": "single_42",
+        "channels": [42]
+    },
+    {
+        "name": "single_43",
+        "channels": [43]
+    },
+    {
+        "name": "single_44",
+        "channels": [44]
+    },
+    {
+        "name": "single_45",
+        "channels": [45]
+    },
+    {
+        "name": "single_46",
+        "channels": [46]
+    },
+    {
+        "name": "single_47",
+        "channels": [47]
+    },
+    {
+        "name": "single_48",
+        "channels": [48]
+    },
+    {
+        "name": "single_49",
+        "channels": [49]
+    },
+    {
+        "name": "single_50",
+        "channels": [50]
+    },
+    {
+        "name": "single_51",
+        "channels": [51]
+    },
+    {
+        "name": "single_52",
+        "channels": [52]
+    },
+    {
+        "name": "single_53",
+        "channels": [53]
+    },
+    {
+        "name": "single_54",
+        "channels": [54]
+    },
+    {
+        "name": "single_55",
+        "channels": [55]
+    },
+    {
+        "name": "single_56",
+        "channels": [56]
+    },
+    {
+        "name": "single_57",
+        "channels": [57]
+    },
+    {
+        "name": "single_58",
+        "channels": [58]
+    },
+    {
+        "name": "single_59",
+        "channels": [59]
+    },
+    {
+        "name": "single_60",
+        "channels": [60]
+    },
+    {
+        "name": "single_61",
+        "channels": [61]
+    },
+    {
+        "name": "single_62",
+        "channels": [62]
+    },
+    {
+        "name": "single_63",
+        "channels": [63]
+    }
+]

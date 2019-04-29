@@ -1,0 +1,10 @@
+[
+    {
+        "name": "speed",
+        "function": "speed"
+    },
+    {
+        "name": "acceleration",
+        "function": "acceleration"
+    }
+]
