@@ -1,18 +1,1503 @@
 [
     {
-        "name": null,
-        "patient": null,
-        "group": null,
-        "target": null,
-        "path": null,
-        "broken_channels": null
+        "name": "030319_MGMSU_Klimashova#10_right_little_60s_03-03_17-17-50",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/10_right_little_60s_03-03_17-17-50.mat",
+        "filename": "10_right_little_60s_03-03_17-17-50.mat",
+        "targets": [
+            4
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
     },
     {
-        "name": null,
-        "patient": null,
-        "group": null,
-        "target": null,
-        "path": null,
-        "broken_channels": null
+        "name": "030319_MGMSU_Klimashova#10_right_little_60s_03-03_17-19-02",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/10_right_little_60s_03-03_17-19-02.mat",
+        "filename": "10_right_little_60s_03-03_17-19-02.mat",
+        "targets": [
+            4
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#1_left_little_60s_03-03_17-23-21",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/1_left_little_60s_03-03_17-23-21.mat",
+        "filename": "1_left_little_60s_03-03_17-23-21.mat",
+        "targets": [
+            5
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#2_left_ring_60s_03-03_17-24-39",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/2_left_ring_60s_03-03_17-24-39.mat",
+        "filename": "2_left_ring_60s_03-03_17-24-39.mat",
+        "targets": [
+            6
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#3_left_middle_60s_03-03_17-26-01",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/3_left_middle_60s_03-03_17-26-01.mat",
+        "filename": "3_left_middle_60s_03-03_17-26-01.mat",
+        "targets": [
+            7
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#4_left_index_60s_03-03_17-27-21",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/4_left_index_60s_03-03_17-27-21.mat",
+        "filename": "4_left_index_60s_03-03_17-27-21.mat",
+        "targets": [
+            8
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#5_left_thumb_60s_03-03_17-28-41",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/5_left_thumb_60s_03-03_17-28-41.mat",
+        "filename": "5_left_thumb_60s_03-03_17-28-41.mat",
+        "targets": [
+            9
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#6_right_thumb_60s_03-03_17-07-05",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/6_right_thumb_60s_03-03_17-07-05.mat",
+        "filename": "6_right_thumb_60s_03-03_17-07-05.mat",
+        "targets": [
+            0
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#6_right_thumb_60s_03-03_17-08-17",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/6_right_thumb_60s_03-03_17-08-17.mat",
+        "filename": "6_right_thumb_60s_03-03_17-08-17.mat",
+        "targets": [
+            0
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#7_right_index_60s_03-03_17-09-44",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/7_right_index_60s_03-03_17-09-44.mat",
+        "filename": "7_right_index_60s_03-03_17-09-44.mat",
+        "targets": [
+            1
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#7_right_index_60s_03-03_17-10-55",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/7_right_index_60s_03-03_17-10-55.mat",
+        "filename": "7_right_index_60s_03-03_17-10-55.mat",
+        "targets": [
+            1
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#8_right_middle_60s_03-03_17-12-25",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/8_right_middle_60s_03-03_17-12-25.mat",
+        "filename": "8_right_middle_60s_03-03_17-12-25.mat",
+        "targets": [
+            2
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#8_right_middle_60s_03-03_17-13-43",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/8_right_middle_60s_03-03_17-13-43.mat",
+        "filename": "8_right_middle_60s_03-03_17-13-43.mat",
+        "targets": [
+            2
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#9_right_ring_60s_03-03_17-15-07",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/9_right_ring_60s_03-03_17-15-07.mat",
+        "filename": "9_right_ring_60s_03-03_17-15-07.mat",
+        "targets": [
+            3
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#9_right_ring_60s_03-03_17-16-18",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/9_right_ring_60s_03-03_17-16-18.mat",
+        "filename": "9_right_ring_60s_03-03_17-16-18.mat",
+        "targets": [
+            3
+        ],
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#exp_60s_03-03_17-02-41",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/exp_60s_03-03_17-02-41.mat",
+        "filename": "exp_60s_03-03_17-02-41.mat",
+        "targets": null,
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#exp_60s_03-03_17-20-36",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/exp_60s_03-03_17-20-36.mat",
+        "filename": "exp_60s_03-03_17-20-36.mat",
+        "targets": null,
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#exp_60s_03-03_17-21-46",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/exp_60s_03-03_17-21-46.mat",
+        "filename": "exp_60s_03-03_17-21-46.mat",
+        "targets": null,
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#exp_60s_03-03_17-30-11",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/exp_60s_03-03_17-30-11.mat",
+        "filename": "exp_60s_03-03_17-30-11.mat",
+        "targets": null,
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "030319_MGMSU_Klimashova#fingers_400s_03-03_17-33-03",
+        "path": "/home/amplifier/common/DATA/ECOG/030319_MGMSU_Klimashova/mat_converted/fingers_400s_03-03_17-33-03.mat",
+        "filename": "fingers_400s_03-03_17-33-03.mat",
+        "targets": null,
+        "group": "030319_MGMSU_Klimashova",
+        "patient": "Klimashova",
+        "source": "MGMSU",
+        "date": "03/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#10_right_little_60s_03-12_17-44-07",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/10_right_little_60s_03-12_17-44-07.mat",
+        "filename": "10_right_little_60s_03-12_17-44-07.mat",
+        "targets": [
+            4
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#10_right_little_60s_03-12_17-45-25",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/10_right_little_60s_03-12_17-45-25.mat",
+        "filename": "10_right_little_60s_03-12_17-45-25.mat",
+        "targets": [
+            4
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#6_right_thumb_60s_03-12_17-31-18",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/6_right_thumb_60s_03-12_17-31-18.mat",
+        "filename": "6_right_thumb_60s_03-12_17-31-18.mat",
+        "targets": [
+            0
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#6_right_thumb_60s_03-12_17-32-30",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/6_right_thumb_60s_03-12_17-32-30.mat",
+        "filename": "6_right_thumb_60s_03-12_17-32-30.mat",
+        "targets": [
+            0
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#7_right_index_60s_03-12_17-34-10",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/7_right_index_60s_03-12_17-34-10.mat",
+        "filename": "7_right_index_60s_03-12_17-34-10.mat",
+        "targets": [
+            1
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#7_right_index_60s_03-12_17-35-22",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/7_right_index_60s_03-12_17-35-22.mat",
+        "filename": "7_right_index_60s_03-12_17-35-22.mat",
+        "targets": [
+            1
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#8_right_middle_60s_03-12_17-37-42",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/8_right_middle_60s_03-12_17-37-42.mat",
+        "filename": "8_right_middle_60s_03-12_17-37-42.mat",
+        "targets": [
+            2
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#8_right_middle_60s_03-12_17-39-07",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/8_right_middle_60s_03-12_17-39-07.mat",
+        "filename": "8_right_middle_60s_03-12_17-39-07.mat",
+        "targets": [
+            2
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#9_right_ring_60s_03-12_17-40-41",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/9_right_ring_60s_03-12_17-40-41.mat",
+        "filename": "9_right_ring_60s_03-12_17-40-41.mat",
+        "targets": [
+            3
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "120319_MGMSU_Yatsuk#9_right_ring_60s_03-12_17-41-53",
+        "path": "/home/amplifier/common/DATA/ECOG/120319_MGMSU_Yatsuk/mat_converted/fingers/9_right_ring_60s_03-12_17-41-53.mat",
+        "filename": "9_right_ring_60s_03-12_17-41-53.mat",
+        "targets": [
+            3
+        ],
+        "group": "120319_MGMSU_Yatsuk",
+        "patient": "Yatsuk",
+        "source": "MGMSU",
+        "date": "12/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#10_right_little_60s_10-14_13-55-21",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/10_right_little_60s_10-14_13-55-21.mat",
+        "filename": "10_right_little_60s_10-14_13-55-21.mat",
+        "targets": [
+            4
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#1_left_little_60s_10-14_13-47-28",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/1_left_little_60s_10-14_13-47-28.mat",
+        "filename": "1_left_little_60s_10-14_13-47-28.mat",
+        "targets": [
+            5
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#2_left_ring_60s_10-14_13-48-55",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/2_left_ring_60s_10-14_13-48-55.mat",
+        "filename": "2_left_ring_60s_10-14_13-48-55.mat",
+        "targets": [
+            6
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#3_left_middle_60s_10-14_13-50-13",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/3_left_middle_60s_10-14_13-50-13.mat",
+        "filename": "3_left_middle_60s_10-14_13-50-13.mat",
+        "targets": [
+            7
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#4_left_index_60s_10-14_13-51-27",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/4_left_index_60s_10-14_13-51-27.mat",
+        "filename": "4_left_index_60s_10-14_13-51-27.mat",
+        "targets": [
+            8
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#4_left_index_60s_10-14_13-52-40",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/4_left_index_60s_10-14_13-52-40.mat",
+        "filename": "4_left_index_60s_10-14_13-52-40.mat",
+        "targets": [
+            8
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#5_left_thumb_60s_10-14_13-54-03",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/5_left_thumb_60s_10-14_13-54-03.mat",
+        "filename": "5_left_thumb_60s_10-14_13-54-03.mat",
+        "targets": [
+            9
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#6_right_thumb_60s_10-14_14-00-22",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/6_right_thumb_60s_10-14_14-00-22.mat",
+        "filename": "6_right_thumb_60s_10-14_14-00-22.mat",
+        "targets": [
+            0
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#7_right_index_60s_10-14_13-59-10",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/7_right_index_60s_10-14_13-59-10.mat",
+        "filename": "7_right_index_60s_10-14_13-59-10.mat",
+        "targets": [
+            1
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#8_right_middle_60s_10-14_13-57-57",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/8_right_middle_60s_10-14_13-57-57.mat",
+        "filename": "8_right_middle_60s_10-14_13-57-57.mat",
+        "targets": [
+            2
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#9_right_ring_60s_10-14_13-56-41",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/9_right_ring_60s_10-14_13-56-41.mat",
+        "filename": "9_right_ring_60s_10-14_13-56-41.mat",
+        "targets": [
+            3
+        ],
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "141018_MGMSU_Chernov#fingers_400s_10-14_14-05-23",
+        "path": "/home/amplifier/common/DATA/ECOG/141018_MGMSU_Chernov/converted_mat/fingers/fingers_400s_10-14_14-05-23.mat",
+        "filename": "fingers_400s_10-14_14-05-23.mat",
+        "targets": null,
+        "group": "141018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "14/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#10_right_little_60s_10-15_14-00-22",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/10_right_little_60s_10-15_14-00-22.mat",
+        "filename": "10_right_little_60s_10-15_14-00-22.mat",
+        "targets": [
+            4
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#1_left_little_60s_10-15_13-54-00",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/1_left_little_60s_10-15_13-54-00.mat",
+        "filename": "1_left_little_60s_10-15_13-54-00.mat",
+        "targets": [
+            5
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#2_left_ring_60s_10-15_13-55-14",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/2_left_ring_60s_10-15_13-55-14.mat",
+        "filename": "2_left_ring_60s_10-15_13-55-14.mat",
+        "targets": [
+            6
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#3_left_middle_60s_10-15_13-56-29",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/3_left_middle_60s_10-15_13-56-29.mat",
+        "filename": "3_left_middle_60s_10-15_13-56-29.mat",
+        "targets": [
+            7
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#4_left_index_60s_10-15_13-57-45",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/4_left_index_60s_10-15_13-57-45.mat",
+        "filename": "4_left_index_60s_10-15_13-57-45.mat",
+        "targets": [
+            8
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#5_left_thumb_60s_10-15_13-59-04",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/5_left_thumb_60s_10-15_13-59-04.mat",
+        "filename": "5_left_thumb_60s_10-15_13-59-04.mat",
+        "targets": [
+            9
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#6_right_thumb_60s_10-15_14-05-24",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/6_right_thumb_60s_10-15_14-05-24.mat",
+        "filename": "6_right_thumb_60s_10-15_14-05-24.mat",
+        "targets": [
+            0
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#7_right_index_60s_10-15_14-04-02",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/7_right_index_60s_10-15_14-04-02.mat",
+        "filename": "7_right_index_60s_10-15_14-04-02.mat",
+        "targets": [
+            1
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#8_right_middle_60s_10-15_14-02-49",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/8_right_middle_60s_10-15_14-02-49.mat",
+        "filename": "8_right_middle_60s_10-15_14-02-49.mat",
+        "targets": [
+            2
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#9_right_ring_60s_10-15_14-01-36",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/9_right_ring_60s_10-15_14-01-36.mat",
+        "filename": "9_right_ring_60s_10-15_14-01-36.mat",
+        "targets": [
+            3
+        ],
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "151018_MGMSU_Chernov#fingers_400s_10-15_14-06-51",
+        "path": "/home/amplifier/common/DATA/ECOG/151018_MGMSU_Chernov/converted_mat/fingers/fingers_400s_10-15_14-06-51.mat",
+        "filename": "fingers_400s_10-15_14-06-51.mat",
+        "targets": null,
+        "group": "151018_MGMSU_Chernov",
+        "patient": "Chernov",
+        "source": "MGMSU",
+        "date": "15/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#10_right_little_60s_10-16_10-44-59",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/10_right_little_60s_10-16_10-44-59.mat",
+        "filename": "10_right_little_60s_10-16_10-44-59.mat",
+        "targets": [
+            4
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#1_left_little_60s_10-16_10-36-57",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/1_left_little_60s_10-16_10-36-57.mat",
+        "filename": "1_left_little_60s_10-16_10-36-57.mat",
+        "targets": [
+            5
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#1_left_little_60s_10-16_10-38-14",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/1_left_little_60s_10-16_10-38-14.mat",
+        "filename": "1_left_little_60s_10-16_10-38-14.mat",
+        "targets": [
+            5
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#2_left_ring_60s_10-16_10-39-31",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/2_left_ring_60s_10-16_10-39-31.mat",
+        "filename": "2_left_ring_60s_10-16_10-39-31.mat",
+        "targets": [
+            6
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#3_left_middle_60s_10-16_10-40-53",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/3_left_middle_60s_10-16_10-40-53.mat",
+        "filename": "3_left_middle_60s_10-16_10-40-53.mat",
+        "targets": [
+            7
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#4_left_index_60s_10-16_10-42-09",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/4_left_index_60s_10-16_10-42-09.mat",
+        "filename": "4_left_index_60s_10-16_10-42-09.mat",
+        "targets": [
+            8
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#5_left_thumb_60s_10-16_10-43-28",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/5_left_thumb_60s_10-16_10-43-28.mat",
+        "filename": "5_left_thumb_60s_10-16_10-43-28.mat",
+        "targets": [
+            9
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#6_right_thumb_60s_10-16_10-50-25",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/6_right_thumb_60s_10-16_10-50-25.mat",
+        "filename": "6_right_thumb_60s_10-16_10-50-25.mat",
+        "targets": [
+            0
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#7_right_index_60s_10-16_10-49-08",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/7_right_index_60s_10-16_10-49-08.mat",
+        "filename": "7_right_index_60s_10-16_10-49-08.mat",
+        "targets": [
+            1
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#8_right_middle_60s_10-16_10-47-50",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/8_right_middle_60s_10-16_10-47-50.mat",
+        "filename": "8_right_middle_60s_10-16_10-47-50.mat",
+        "targets": [
+            2
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#9_right_ring_60s_10-16_10-46-33",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/9_right_ring_60s_10-16_10-46-33.mat",
+        "filename": "9_right_ring_60s_10-16_10-46-33.mat",
+        "targets": [
+            3
+        ],
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "161018_Polenova_Ovchinnikova#fingers_400s_10-16_11-05-21",
+        "path": "/home/amplifier/common/DATA/ECOG/161018_Polenova_Ovchinnikova/converted_mat/fingers/fingers_400s_10-16_11-05-21.mat",
+        "filename": "fingers_400s_10-16_11-05-21.mat",
+        "targets": null,
+        "group": "161018_Polenova_Ovchinnikova",
+        "patient": "Ovchinnikova",
+        "source": "Polenova",
+        "date": "16/10/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#10_right_little_60s_03-19_17-21-53",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/10_right_little_60s_03-19_17-21-53.mat",
+        "filename": "10_right_little_60s_03-19_17-21-53.mat",
+        "targets": [
+            4
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#1_left_little_60s_03-19_17-06-59",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/1_left_little_60s_03-19_17-06-59.mat",
+        "filename": "1_left_little_60s_03-19_17-06-59.mat",
+        "targets": [
+            5
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#2_left_ring_60s_03-19_17-08-38",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/2_left_ring_60s_03-19_17-08-38.mat",
+        "filename": "2_left_ring_60s_03-19_17-08-38.mat",
+        "targets": [
+            6
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#3_left_middle_60s_03-19_17-09-58",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/3_left_middle_60s_03-19_17-09-58.mat",
+        "filename": "3_left_middle_60s_03-19_17-09-58.mat",
+        "targets": [
+            7
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#4_left_index_60s_03-19_17-11-17",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/4_left_index_60s_03-19_17-11-17.mat",
+        "filename": "4_left_index_60s_03-19_17-11-17.mat",
+        "targets": [
+            8
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#5_left_thumb_60s_03-19_17-12-38",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/5_left_thumb_60s_03-19_17-12-38.mat",
+        "filename": "5_left_thumb_60s_03-19_17-12-38.mat",
+        "targets": [
+            9
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#6_right_thumb_60s_03-19_17-15-28",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/6_right_thumb_60s_03-19_17-15-28.mat",
+        "filename": "6_right_thumb_60s_03-19_17-15-28.mat",
+        "targets": [
+            0
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#7_right_index_60s_03-19_17-16-57",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/7_right_index_60s_03-19_17-16-57.mat",
+        "filename": "7_right_index_60s_03-19_17-16-57.mat",
+        "targets": [
+            1
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#8_right_middle_60s_03-19_17-19-11",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/8_right_middle_60s_03-19_17-19-11.mat",
+        "filename": "8_right_middle_60s_03-19_17-19-11.mat",
+        "targets": [
+            2
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "190319_MGMSU_Saifulin#9_right_ring_60s_03-19_17-20-33",
+        "path": "/home/amplifier/common/DATA/ECOG/190319_MGMSU_Saifulin/mat_converted/9_right_ring_60s_03-19_17-20-33.mat",
+        "filename": "9_right_ring_60s_03-19_17-20-33.mat",
+        "targets": [
+            3
+        ],
+        "group": "190319_MGMSU_Saifulin",
+        "patient": "Saifulin",
+        "source": "MGMSU",
+        "date": "19/03/2019",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#10_right_little_60s_11-28_15-32-42",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/10_right_little_60s_11-28_15-32-42.mat",
+        "filename": "10_right_little_60s_11-28_15-32-42.mat",
+        "targets": [
+            4
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#1_left_little_60s_11-28_15-05-24",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/1_left_little_60s_11-28_15-05-24.mat",
+        "filename": "1_left_little_60s_11-28_15-05-24.mat",
+        "targets": [
+            5
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#2_left_ring_60s_11-28_15-08-00",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/2_left_ring_60s_11-28_15-08-00.mat",
+        "filename": "2_left_ring_60s_11-28_15-08-00.mat",
+        "targets": [
+            6
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#3_left_middle_60s_11-28_15-10-54",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/3_left_middle_60s_11-28_15-10-54.mat",
+        "filename": "3_left_middle_60s_11-28_15-10-54.mat",
+        "targets": [
+            7
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#4_left_index_60s_11-28_15-13-34",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/4_left_index_60s_11-28_15-13-34.mat",
+        "filename": "4_left_index_60s_11-28_15-13-34.mat",
+        "targets": [
+            8
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#5_left_thumb_60s_11-28_15-16-13",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/5_left_thumb_60s_11-28_15-16-13.mat",
+        "filename": "5_left_thumb_60s_11-28_15-16-13.mat",
+        "targets": [
+            9
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#6_right_thumb_60s_11-28_15-20-33",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/6_right_thumb_60s_11-28_15-20-33.mat",
+        "filename": "6_right_thumb_60s_11-28_15-20-33.mat",
+        "targets": [
+            0
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#7_right_index_60s_11-28_15-23-11",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/7_right_index_60s_11-28_15-23-11.mat",
+        "filename": "7_right_index_60s_11-28_15-23-11.mat",
+        "targets": [
+            1
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#8_right_middle_60s_11-28_15-25-44",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/8_right_middle_60s_11-28_15-25-44.mat",
+        "filename": "8_right_middle_60s_11-28_15-25-44.mat",
+        "targets": [
+            2
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#1st_trial#9_right_ring_60s_11-28_15-30-11",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/1st_trial/9_right_ring_60s_11-28_15-30-11.mat",
+        "filename": "9_right_ring_60s_11-28_15-30-11.mat",
+        "targets": [
+            3
+        ],
+        "group": "281118_MGMSU_Mezhidova#1st_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#10_right_little_60s_11-28_15-33-53",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/10_right_little_60s_11-28_15-33-53.mat",
+        "filename": "10_right_little_60s_11-28_15-33-53.mat",
+        "targets": [
+            4
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#1_left_little_60s_11-28_15-06-42",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/1_left_little_60s_11-28_15-06-42.mat",
+        "filename": "1_left_little_60s_11-28_15-06-42.mat",
+        "targets": [
+            5
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#2_left_ring_60s_11-28_15-09-29",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/2_left_ring_60s_11-28_15-09-29.mat",
+        "filename": "2_left_ring_60s_11-28_15-09-29.mat",
+        "targets": [
+            6
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#3_left_middle_60s_11-28_15-12-06",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/3_left_middle_60s_11-28_15-12-06.mat",
+        "filename": "3_left_middle_60s_11-28_15-12-06.mat",
+        "targets": [
+            7
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#4_left_index_60s_11-28_15-14-50",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/4_left_index_60s_11-28_15-14-50.mat",
+        "filename": "4_left_index_60s_11-28_15-14-50.mat",
+        "targets": [
+            8
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#5_left_thumb_60s_11-28_15-17-23",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/5_left_thumb_60s_11-28_15-17-23.mat",
+        "filename": "5_left_thumb_60s_11-28_15-17-23.mat",
+        "targets": [
+            9
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#6_right_thumb_60s_11-28_15-21-47",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/6_right_thumb_60s_11-28_15-21-47.mat",
+        "filename": "6_right_thumb_60s_11-28_15-21-47.mat",
+        "targets": [
+            0
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#7_right_index_60s_11-28_15-24-23",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/7_right_index_60s_11-28_15-24-23.mat",
+        "filename": "7_right_index_60s_11-28_15-24-23.mat",
+        "targets": [
+            1
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#8_right_middle_60s_11-28_15-28-35",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/8_right_middle_60s_11-28_15-28-35.mat",
+        "filename": "8_right_middle_60s_11-28_15-28-35.mat",
+        "targets": [
+            2
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#2nd_trial#9_right_ring_60s_11-28_15-31-25",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/2nd_trial/9_right_ring_60s_11-28_15-31-25.mat",
+        "filename": "9_right_ring_60s_11-28_15-31-25.mat",
+        "targets": [
+            3
+        ],
+        "group": "281118_MGMSU_Mezhidova#2nd_trial",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "281118_MGMSU_Mezhidova#fingers_400s_11-28_15-37-14",
+        "path": "/home/amplifier/common/DATA/ECOG/281118_MGMSU_Mezhidova/281118/fingers_mat/fingers_400s_11-28_15-37-14.mat",
+        "filename": "fingers_400s_11-28_15-37-14.mat",
+        "targets": null,
+        "group": "281118_MGMSU_Mezhidova",
+        "patient": "Mezhidova",
+        "source": "MGMSU",
+        "date": "28/11/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#10_right_little_60s_12-10_16-43-53",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/10_right_little_60s_12-10_16-43-53.mat",
+        "filename": "10_right_little_60s_12-10_16-43-53.mat",
+        "targets": [
+            4
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#10_right_little_60s_12-10_16-45-05",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/10_right_little_60s_12-10_16-45-05.mat",
+        "filename": "10_right_little_60s_12-10_16-45-05.mat",
+        "targets": [
+            4
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#1_left_little_60s_12-10_16-15-11",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/1_left_little_60s_12-10_16-15-11.mat",
+        "filename": "1_left_little_60s_12-10_16-15-11.mat",
+        "targets": [
+            5
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#1_left_little_60s_12-10_16-16-22",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/1_left_little_60s_12-10_16-16-22.mat",
+        "filename": "1_left_little_60s_12-10_16-16-22.mat",
+        "targets": [
+            5
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#2_left_ring_60s_12-10_16-18-16",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/2_left_ring_60s_12-10_16-18-16.mat",
+        "filename": "2_left_ring_60s_12-10_16-18-16.mat",
+        "targets": [
+            6
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#2_left_ring_60s_12-10_16-19-29",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/2_left_ring_60s_12-10_16-19-29.mat",
+        "filename": "2_left_ring_60s_12-10_16-19-29.mat",
+        "targets": [
+            6
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#3_left_middle_60s_12-10_16-21-02",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/3_left_middle_60s_12-10_16-21-02.mat",
+        "filename": "3_left_middle_60s_12-10_16-21-02.mat",
+        "targets": [
+            7
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#3_left_middle_60s_12-10_16-22-15",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/3_left_middle_60s_12-10_16-22-15.mat",
+        "filename": "3_left_middle_60s_12-10_16-22-15.mat",
+        "targets": [
+            7
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#4_left_index_60s_12-10_16-23-37",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/4_left_index_60s_12-10_16-23-37.mat",
+        "filename": "4_left_index_60s_12-10_16-23-37.mat",
+        "targets": [
+            8
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#4_left_index_60s_12-10_16-24-57",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/4_left_index_60s_12-10_16-24-57.mat",
+        "filename": "4_left_index_60s_12-10_16-24-57.mat",
+        "targets": [
+            8
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#5_left_thumb_60s_12-10_16-27-47",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/5_left_thumb_60s_12-10_16-27-47.mat",
+        "filename": "5_left_thumb_60s_12-10_16-27-47.mat",
+        "targets": [
+            9
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#5_left_thumb_60s_12-10_16-28-58",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/5_left_thumb_60s_12-10_16-28-58.mat",
+        "filename": "5_left_thumb_60s_12-10_16-28-58.mat",
+        "targets": [
+            9
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#6_right_thumb_60s_12-10_16-32-54",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/6_right_thumb_60s_12-10_16-32-54.mat",
+        "filename": "6_right_thumb_60s_12-10_16-32-54.mat",
+        "targets": [
+            0
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#6_right_thumb_60s_12-10_16-34-06",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/6_right_thumb_60s_12-10_16-34-06.mat",
+        "filename": "6_right_thumb_60s_12-10_16-34-06.mat",
+        "targets": [
+            0
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#7_right_index_60s_12-10_16-35-54",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/7_right_index_60s_12-10_16-35-54.mat",
+        "filename": "7_right_index_60s_12-10_16-35-54.mat",
+        "targets": [
+            1
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#7_right_index_60s_12-10_16-37-05",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/7_right_index_60s_12-10_16-37-05.mat",
+        "filename": "7_right_index_60s_12-10_16-37-05.mat",
+        "targets": [
+            1
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#8_right_middle_60s_12-10_16-38-28",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/8_right_middle_60s_12-10_16-38-28.mat",
+        "filename": "8_right_middle_60s_12-10_16-38-28.mat",
+        "targets": [
+            2
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#8_right_middle_60s_12-10_16-39-39",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/8_right_middle_60s_12-10_16-39-39.mat",
+        "filename": "8_right_middle_60s_12-10_16-39-39.mat",
+        "targets": [
+            2
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#9_right_ring_60s_12-10_16-40-59",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/9_right_ring_60s_12-10_16-40-59.mat",
+        "filename": "9_right_ring_60s_12-10_16-40-59.mat",
+        "targets": [
+            3
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#9_right_ring_60s_12-10_16-42-35",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/9_right_ring_60s_12-10_16-42-35.mat",
+        "filename": "9_right_ring_60s_12-10_16-42-35.mat",
+        "targets": [
+            3
+        ],
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
+    },
+    {
+        "name": "101218_Polenova_Sukhov#fingers_400s_12-10_16-53-14",
+        "path": "/home/amplifier/common/DATA/ECOG_mat_converted/101218/fingers_400s_12-10_16-53-14.mat",
+        "filename": "fingers_400s_12-10_16-53-14.mat",
+        "targets": null,
+        "group": "101218_Polenova_Sukhov",
+        "patient": "Sukhov",
+        "source": "Polenova",
+        "date": "10/12/2018",
+        "frequency": 2000
     }
 ]

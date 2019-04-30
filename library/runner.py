@@ -6,48 +6,53 @@ import sys
 from . import process
 
 
-def to_result_filename(dataset, channels, preprocessing, model, cv):
-    return "{dataset}:{channels}:{preprocessing}:{model}:{cv}"
+JOB_PARAMETERS_SEPARATOR = "__"
+
+
+def is_job_valid(job):
+    requered_fields = ["data", "channels", "targets", "preprocessing", "model", "testing"]
+    for field in requered_fields:
+        assert field in job
+    for field in job:
+        assert field in requered_fields
+    return True
+
+
+def to_result_filename(data, channels, targets, preprocessing, model, testing):
+    return JOB_PARAMETERS_SEPARATOR.join([data, channels, preprocessing, model, testing])
 
 
 def from_result_filename(filename):
-    assert(len(filename.split(":")) == 5)
-    dataset, channels, preprocessing, model, cv = filename.split(":")
-    return dataset, channels, preprocessing, model, cv
+    assert(len(filename.split(JOB_PARAMETERS_SEPARATOR)) == 6)
+    dataset, channels, preprocessing, model, cv = filename.split(JOB_PARAMETERS_SEPARATOR)
+    return dataset, channels, preprocessing, model, testing
 
 
-def update_jobs(jobs, jobs_retry_count, output_folder):
+def update_jobs(jobs):
     new_jobs = []
     for job in jobs:
-        if jobs_retry_count[job] > 0 and not os.path.exists("{}/{}".format(output_folder, job)):
+        if not os.path.exists(job["output_file_path"]):
             new_jobs.append(job)
     random.shuffle(new_jobs)
     return new_jobs
 
 
-def runner(input_files, output_folder, model, config):
-    jobs = []
-    for file in input_files:
-        if model != "net_all":
-            for channel in range(config["number_of_channels"]):
-                jobs.append(to_result_filename(file, channel, model))
-        else:
-            jobs.append(to_result_filename(file, -1, model))
-    jobs_retry_count = {}
-    for job in jobs:
-        jobs_retry_count[job] = 1
+def runner(output_folder, jobs, configs):
+    for index, job in enumerate(jobs):
+        is_job_valid(job)
+        output_filename = to_result_filename(**job)
+        jobs[index]["output_filename"] = output_filename
+        jobs[index]["output_file_path"] = f'{output_folder}/{output_filename}'
 
     while len(jobs) > 0:
-        jobs = update_jobs(jobs, jobs_retry_count, output_folder)
-        sys.stderr.write("Jobs left: {}\n\n".format(len(jobs)))
+        jobs = update_jobs(jobs)
         if len(jobs) == 0:
             sys.stderr.write('All Jobs Are DONE!\n')
             return
+        else:
+            sys.stderr.write("Jobs left: {}\n\n".format(len(jobs)))
         job_to_process = jobs[0]
-        jobs_retry_count[job_to_process] -= 1
-        original_file, channel, model_from_job = to_original_file_and_channel_and_model(job_to_process)
-        assert(model == model_from_job)
-        output_file = output_folder + "/" + job_to_process
-        sys.stderr.write("Process start: {}\n".format(job_to_process))
-        process.process(original_file, channel, output_file, model, config)
-        sys.stderr.write("Process finished: {}\n".format(job_to_process))
+        output_filename = job_to_process["output_filename"]
+        sys.stderr.write("Process start: {}\n".format(output_filename))
+        process.process(job_to_process, configs)
+        sys.stderr.write("Process finished: {}\n".format(output_filename))

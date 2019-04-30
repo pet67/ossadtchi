@@ -1,12 +1,18 @@
 [
     {
-        "name": null,
-        "model_base_class": null,
-        "kwargs": null
+        "name": "baseline_net_1700_0",
+        "model_base_class": "beseline_net",
+        "kwargs": {
+            "lag_backward": 1700,
+            "lag_forevard": 0,
+        }
     },
     {
-        "name": null,
-        "model_base_class": null,
-        "kwargs": null
-    }
+        "name": "baseline_model_1700_1700",
+        "model_base_class": "beseline_net",
+        "kwargs": {
+            "lag_backward": 1700,
+            "lag_forevard": 1700,
+        }
+    },
 ]
