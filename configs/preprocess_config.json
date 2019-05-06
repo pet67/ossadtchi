@@ -1,10 +1,11 @@
 [
     {
-        "name": "speed",
-        "function": "speed"
-    },
-    {
-        "name": "acceleration",
-        "function": "acceleration"
+        "name": "signals_and_targets_standart_scaling",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
+            }
+        ]
     }
 ]

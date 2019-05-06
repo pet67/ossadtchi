@@ -1,18 +1,35 @@
 [
     {
         "name": "baseline_net_1700_0",
-        "model_base_class": "beseline_net",
+        "model_base_class": "BaselineNet",
         "kwargs": {
             "lag_backward": 1700,
-            "lag_forevard": 0,
+            "lag_foreward": 0,
         }
     },
     {
         "name": "baseline_model_1700_1700",
-        "model_base_class": "beseline_net",
+        "model_base_class": "BaselineNet",
         "kwargs": {
             "lag_backward": 1700,
-            "lag_forevard": 1700,
+            "lag_foreward": 1700,
+        }
+    },
+    {
+        "name": "baseline_net_400_0",
+        "model_base_class": "BaselineNet",
+        "kwargs": {
+            "lag_backward": 400,
+            "lag_foreward": 0,
+        }
+    },
+    {
+        "name": "baseline_net_400_400
+        ",
+        "model_base_class": "BaselineNet",
+        "kwargs": {
+            "lag_backward": 400,
+            "lag_foreward": 400,
         }
     },
 ]

@@ -4,24 +4,13 @@ import scipy
 import scipy.io
 import json
 import sklearn
-import sklearn.linear_model
-import sklearn.metrics
 import numpy as np
 import time
 
-import tensorflow as tf
-from tensorflow.python.client import device_lib
-config = tf.ConfigProto()  # noqa
-config.gpu_options.allow_growth = True  # noqa
-sess = tf.Session(config=config)  # noqa
+import models
+import preprocessing
+import data_loaders
 
-import keras
-from keras.layers import Input
-from keras.models import Model
-from keras import optimizers
-
-from . import preprocessing
-from . import nets
 
 
 def generate_train_val_samples(all_samples, folds):
@@ -44,7 +33,7 @@ def process(job, configs):
     output_file_path = job["output_file_path"]
     with open(output_file_path, 'w') as outfile:
         outfile.write("")
-    data_loader, channels, targets, data_preprocessor, model_instance, testing_processor = get_tools(job)
+    data_loader, channels, targets, data_preprocessor, bench_model_class, testing_processor = get_tools(job)
     X, Y = data_loader(job)
     X = X[:, channels]
     Y = Y[:, targets]
@@ -56,13 +45,32 @@ def process(job, configs):
     output["job"]["start_time"] = int(start_time)
     for X_train, Y_train, X_test, Y_test in testing_processor(X, Y):
         start_subjob_time = time.time()
+        assert len(Y_train) == len(Y_test) == 2
+        assert(Y_train.shape[1:] == Y_test.shape[1:])
+        assert len(X_train) == len(X_test)
+        assert len(X_train) >= 2
+        assert len(X_test) >= 2
+        assert(X_train.shape[1:] == X_test.shape[1:])
 
-        model_instance.fit(X_train, Y_train)
-        Y_train_predicted = model_instance.predict(X_train)
-        Y_test_predicted = model_instance.predict(X_test)
+        input_shape = X_train.shape[1:]
+        output_shape = Y_train.shape[1:]
+        
+        model_config = job["model"]
+        kwargs = model_config["kwargs"]
+        kwargs["input_shape"] = input_shape
+        kwargs["output_shape"] = output_shape
+        
+        assert hasattr(model_config["data"], real_data_loaders) or \
+               hasattr(model_config["model_base_class"], simulated_data_generators)
+        bench_model_class = getattr(model_config["model_base_class"], models)
+        bench_model = bench_model_class(**kwargs)
+        bench_model.fit(X_train, Y_train, X_test, Y_test)
 
-        Y_train_sliced = model_instance.slice(Y_train)
-        Y_test_sliced = model_instance.slice(X_test)
+        Y_train_predicted = bench_model.predict(X_train)
+        Y_test_predicted = bench_model.predict(X_test)
+
+        Y_train_sliced = bench_model.slice_target(Y_train)
+        Y_test_sliced = bench_model.slice_target(X_test)
 
         assert len(Y_train_predicted) == len(Y_train_sliced) == len(Y_test_predicted) == len(Y_test_sliced) == 2
         assert Y_train_predicted.shape == Y_train_sliced.shape
