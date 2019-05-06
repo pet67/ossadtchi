@@ -1,0 +1,46 @@
+[
+    {
+        "name": "all10",
+        "channels": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+        "name": "single_0",
+        "channels": [0]
+    },
+    {
+        "name": "single_1",
+        "channels": [1]
+    },
+    {
+        "name": "single_2",
+        "channels": [2]
+    },
+    {
+        "name": "single_3",
+        "channels": [3]
+    },
+    {
+        "name": "single_4",
+        "channels": [4]
+    },
+    {
+        "name": "single_5",
+        "channels": [5]
+    },
+    {
+        "name": "single_6",
+        "channels": [6]
+    },
+    {
+        "name": "single_7",
+        "channels": [7]
+    },
+    {
+        "name": "single_8",
+        "channels": [8]
+    },
+    {
+        "name": "single_9",
+        "channels": [9]
+    }
+]
