@@ -28,7 +28,7 @@ def parse_args():
             original_path = getattr(parsed_args, attr)
             abs_path = os.path.abspath(original_path)
             setattr(parsed_args, attr, abs_path)
-            assert os.path.exists(abs_path)
+            assert os.path.exists(abs_path), f'{abs_path} does not exist'
 
     assert 'CUDA_VISIBLE_DEVICES' in os.environ, 'CUDA_VISIBLE_DEVICES should be specified'
 

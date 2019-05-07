@@ -1,10 +1,10 @@
 [
     {
-        "data": "030319_MGMSU_Klimashova#10_right_little_60s_03-03_17-17-50",
-        "cnannels": "all64",
+        "data": "030319_MGMSU_Klimashova#10_right_little_60s_03-03_17-17-50#mat",
+        "channels": "all64",
         "targets": "single_4",
         "preprocess": "signals_and_targets_standart_scaling",
         "model": "baseline_net_1700_0",
-        "splitter": "train50_test50",
+        "splitter": "train50_test50"
     }
 ]

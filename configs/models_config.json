@@ -4,7 +4,7 @@
         "model_base_class": "BaselineNet",
         "kwargs": {
             "lag_backward": 1700,
-            "lag_foreward": 0,
+            "lag_forward": 0
         }
     },
     {
@@ -12,7 +12,7 @@
         "model_base_class": "BaselineNet",
         "kwargs": {
             "lag_backward": 1700,
-            "lag_foreward": 1700,
+            "lag_forward": 1700
         }
     },
     {
@@ -20,16 +20,15 @@
         "model_base_class": "BaselineNet",
         "kwargs": {
             "lag_backward": 400,
-            "lag_foreward": 0,
+            "lag_forward": 0
         }
     },
     {
-        "name": "baseline_net_400_400
-        ",
+        "name": "baseline_net_400_400",
         "model_base_class": "BaselineNet",
         "kwargs": {
             "lag_backward": 400,
-            "lag_foreward": 400,
+            "lag_forward": 400
         }
-    },
+    }
 ]
