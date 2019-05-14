@@ -30,5 +30,13 @@
             "lag_backward": 400,
             "lag_forward": 400
         }
+    },
+    {
+        "name": "experement_pytorch_net_200_0",
+        "model_base_class": "ExperementPytorchNet",
+        "kwargs": {
+            "lag_backward": 200,
+            "lag_forward": 0
+        }
     }
 ]

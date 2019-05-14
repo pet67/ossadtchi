@@ -26,14 +26,15 @@ JOB_PARAMETERS_SEPARATOR = "__"
 
 
 def to_result_filename(data, channels, targets, preprocess, model, splitter):
-    return JOB_PARAMETERS_SEPARATOR.join([data, channels, preprocess, model, splitter])
-
+    filename = JOB_PARAMETERS_SEPARATOR.join([data, channels, targets, preprocess, model, splitter])
+    assert len(filename.split(JOB_PARAMETERS_SEPARATOR)) == len(JOB_FIELDS_SET)
+    return filename
 
 
 def from_result_filename(filename):
-    assert(len(filename.split(JOB_PARAMETERS_SEPARATOR)) == len(JOB_FIELDS_SET))
-    dataset, channels, preprocess, model, cv = filename.split(JOB_PARAMETERS_SEPARATOR)
-    return dataset, channels, preprocess, model, testing
+    assert len(filename.split(JOB_PARAMETERS_SEPARATOR)) == len(JOB_FIELDS_SET), filename
+    data, channels, targets, preprocess, model, splitter = filename.split(JOB_PARAMETERS_SEPARATOR)
+    return data, channels, targets, preprocess, model, splitter
 
 
 def load_json(path):
@@ -151,7 +152,7 @@ def process(job):
         Y_test_sliced = bench_model.slice_target(Y_test)
 
         assert len(Y_train_predicted.shape) == len(Y_train_sliced.shape) == len(Y_test_predicted.shape) == len(Y_test_sliced.shape) == 2, f"Expected get 2 demensional Y got: Y_train_predicted {Y_train_predicted.shape}, Y_train_sliced {Y_train_sliced.shape}, Y_test_predicted {Y_test_predicted.shape}, Y_test_sliced {Y_test_sliced.shape}"
-        assert Y_train_predicted.shape == Y_train_sliced.shape
+        assert Y_train_predicted.shape == Y_train_sliced.shape, f'Y_train_predicted.shape {Y_train_predicted.shape} != Y_train_sliced.shape {Y_train_sliced.shape}'
         assert Y_test_predicted.shape == Y_test_sliced.shape
 
         end_subjob_time = time.time()

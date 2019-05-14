@@ -7,5 +7,56 @@
                 "kwargs": {}
             }
         ]
+    },
+    {
+        "name": "signals_and_targets_standart_scaling#10hz_highpass_filtering",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
+            },
+            {
+                "function_name": "high_pass_filtering",
+                "kwargs": {
+                    "cutoff_frequency": 10
+                }
+            }
+        ]
+    },
+    {
+        "name": "signals_and_targets_standart_scaling#x8_downsampling",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
+            },
+            {
+                "function_name": "downsample",
+                "kwargs": {
+                    "x_times": 8
+                }
+            }
+        ]
+    },
+    {
+        "name": "signals_and_targets_standart_scaling#10hz_highpass_filtering#x8_downsampling",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
+            },
+            {
+                "function_name": "high_pass_filtering",
+                "kwargs": {
+                    "cutoff_frequency": 10
+                }
+            },
+            {
+                "function_name": "downsample",
+                "kwargs": {
+                    "x_times": 8
+                }
+            }
+        ]
     }
 ]
