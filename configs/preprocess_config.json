@@ -24,6 +24,21 @@
         ]
     },
     {
+        "name": "signals_and_targets_standart_scaling#5hz_highpass_filtering",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
+            },
+            {
+                "function_name": "high_pass_filtering",
+                "kwargs": {
+                    "cutoff_frequency": 5
+                }
+            }
+        ]
+    },
+    {
         "name": "signals_and_targets_standart_scaling#x8_downsampling",
         "preprocessing_pipeline": [
             {

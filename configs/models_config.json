@@ -38,5 +38,13 @@
             "lag_backward": 200,
             "lag_forward": 0
         }
+    },
+    {
+        "name": "simple_pytorch_net_200_0",
+        "model_base_class": "SimplePytorchNet",
+        "kwargs": {
+            "lag_backward": 200,
+            "lag_forward": 0
+        }
     }
 ]

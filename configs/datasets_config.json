@@ -1616,5 +1616,17 @@
         "date": "10/12/2018",
         "frequency": 2000,
         "data_loader": "load_ecog_pn_mat"
+    },
+    {
+        "name": "FingerOst30#mat",
+        "path": "/home/amplifier/common/pet67/production/Datasets/FingerOst30.mat",
+        "filename": "FingerOst30.mat",
+        "targets": [0, 1, 2],
+        "group": "FingerOst30",
+        "patient": "Ostanina",
+        "source": "Polenova",
+        "date": "15/12/2016",
+        "frequency": 2000,
+        "data_loader": "load_finger_ost_30_mat"
     }
 ]
