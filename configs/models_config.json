@@ -46,5 +46,10 @@
             "lag_backward": 200,
             "lag_forward": 0
         }
-    }
+    },
+    {
+        "name": "linear_regression",
+        "model_base_class": "LinearRegressionModel",
+        "kwargs": {}
+    } 
 ]

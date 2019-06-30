@@ -182,7 +182,9 @@ def update_jobs(jobs):
 def runner(output_folder, jobs_filepath, configs_folder):
     configs = load_configs(configs_folder)
     jobs = load_and_check_jobs(jobs_filepath, configs, output_folder)
-
+    sys.stderr.write('Configs successfully loaded\n')
+    if len(jobs) == 0:
+        sys.stderr.write('No undone jobs found\n')
     while len(jobs) > 0:
         jobs = update_jobs(jobs)
         if len(jobs) == 0:
