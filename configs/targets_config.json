@@ -4,43 +4,43 @@
         "channels": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     },
     {
-        "name": "single_0",
+        "name": "t0",
         "channels": [0]
     },
     {
-        "name": "single_1",
+        "name": "t1",
         "channels": [1]
     },
     {
-        "name": "single_2",
+        "name": "t2",
         "channels": [2]
     },
     {
-        "name": "single_3",
+        "name": "t3",
         "channels": [3]
     },
     {
-        "name": "single_4",
+        "name": "t4",
         "channels": [4]
     },
     {
-        "name": "single_5",
+        "name": "t5",
         "channels": [5]
     },
     {
-        "name": "single_6",
+        "name": "t6",
         "channels": [6]
     },
     {
-        "name": "single_7",
+        "name": "t7",
         "channels": [7]
     },
     {
-        "name": "single_8",
+        "name": "t8",
         "channels": [8]
     },
     {
-        "name": "single_9",
+        "name": "t9",
         "channels": [9]
     }
 ]

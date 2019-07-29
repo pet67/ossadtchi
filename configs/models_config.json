@@ -40,6 +40,36 @@
         }
     },
     {
+        "name": "new_experement_pytorch_net_200_0",
+        "model_base_class": "NewSimplePytorchNet",
+        "kwargs": {
+            "lag_backward": 200,
+            "lag_forward": 0,
+            "low_pass_filtering": false,
+            "best_channels_only": false
+        }
+    },
+    {
+        "name": "new_experement_pytorch_net_200_0_lowpass_filtered",
+        "model_base_class": "NewSimplePytorchNet",
+        "kwargs": {
+            "lag_backward": 200,
+            "lag_forward": 0,
+            "low_pass_filtering": true,
+            "best_channels_only": false
+        }
+    },
+    {
+        "name": "new_experement_pytorch_net_200_0_lowpass_filtered_and_best_channles_only",
+        "model_base_class": "NewSimplePytorchNet",
+        "kwargs": {
+            "lag_backward": 200,
+            "lag_forward": 0,
+            "low_pass_filtering": true,
+            "best_channels_only": true
+        }
+    },
+    {
         "name": "simple_pytorch_net_200_0",
         "model_base_class": "SimplePytorchNet",
         "kwargs": {
@@ -51,5 +81,15 @@
         "name": "linear_regression",
         "model_base_class": "LinearRegressionModel",
         "kwargs": {}
-    } 
+    },
+    {
+        "name": "ridge_regression",
+        "model_base_class": "RidgeRegressionModel",
+        "kwargs": {}
+    },
+    {
+        "name": "lasso_regression",
+        "model_base_class": "LassoRegressionModel",
+        "kwargs": {}
+    }
 ]

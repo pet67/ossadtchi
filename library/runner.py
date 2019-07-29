@@ -1,4 +1,5 @@
 # coding=utf-8
+import copy
 import os
 import random
 import sys
@@ -15,7 +16,7 @@ from . import preprocessing
 from . import real_data_loaders
 from . import simulated_data_generators
 from . import splitters
-import copy
+
 
 from . import real_data_loaders
 
@@ -28,6 +29,7 @@ JOB_PARAMETERS_SEPARATOR = "__"
 def to_result_filename(data, channels, targets, preprocess, model, splitter):
     filename = JOB_PARAMETERS_SEPARATOR.join([data, channels, targets, preprocess, model, splitter])
     assert len(filename.split(JOB_PARAMETERS_SEPARATOR)) == len(JOB_FIELDS_SET)
+    assert len(filename) <= 255, f"Too long filename {len(filename)}"
     return filename
 
 
@@ -110,10 +112,10 @@ def process(job):
     filepath = job["data"]["path"]
     frequency = job["data"]["frequency"]
     X, Y = loader(filepath)
-    
+
     channels = job["channels"]["channels"]
     X = X[:, channels].reshape((-1, len(channels)))
-    
+
     targets = job["targets"]["channels"]
     Y = Y[:, targets].reshape((-1, len(targets)))
 
@@ -143,13 +145,13 @@ def process(job):
         
         bench_model_class = job["model"]["model_base_class_reference"]
         bench_model = bench_model_class(input_shape=input_shape, output_shape=output_shape, frequency=frequency, **job["model"]["kwargs"])
-        bench_model.fit(X_train, Y_train, X_test, Y_test)
+        bench_model.fit(copy.deepcopy(X_train), copy.deepcopy(Y_train), copy.deepcopy(X_test), copy.deepcopy(Y_test))
 
-        Y_train_predicted = bench_model.predict(X_train)
-        Y_test_predicted = bench_model.predict(X_test)
+        Y_train_predicted = bench_model.predict(copy.deepcopy(X_train))
+        Y_test_predicted = bench_model.predict(copy.deepcopy(X_test))
 
-        Y_train_sliced = bench_model.slice_target(Y_train)
-        Y_test_sliced = bench_model.slice_target(Y_test)
+        Y_train_sliced = bench_model.slice_target(copy.deepcopy(Y_train))
+        Y_test_sliced = bench_model.slice_target(copy.deepcopy(Y_test))
 
         assert len(Y_train_predicted.shape) == len(Y_train_sliced.shape) == len(Y_test_predicted.shape) == len(Y_test_sliced.shape) == 2, f"Expected get 2 demensional Y got: Y_train_predicted {Y_train_predicted.shape}, Y_train_sliced {Y_train_sliced.shape}, Y_test_predicted {Y_test_predicted.shape}, Y_test_sliced {Y_test_sliced.shape}"
         assert Y_train_predicted.shape == Y_train_sliced.shape, f'Y_train_predicted.shape {Y_train_predicted.shape} != Y_train_sliced.shape {Y_train_sliced.shape}'
@@ -157,10 +159,12 @@ def process(job):
 
         end_subjob_time = time.time()
         result = {
-            "Y_train_predicted": Y_train_predicted.tolist(),
-            "Y_train_sliced": Y_train_sliced.tolist(),
-            "Y_test_predicted": Y_test_predicted.tolist(),
-            "Y_test_sliced": Y_test_sliced.tolist(),
+            #"Y_train_predicted": Y_train_predicted.tolist(),
+            #"Y_train_sliced": Y_train_sliced.tolist(),
+            #"Y_test_predicted": Y_test_predicted.tolist(),
+            #"Y_test_sliced": Y_test_sliced.tolist(),
+            "train_correlation": np.corrcoef(Y_train_sliced, Y_train_predicted, rowvar=False).tolist(),
+            "test_correlation": np.corrcoef(Y_test_sliced, Y_test_predicted, rowvar=False).tolist(),
             "execution_time": float(end_subjob_time - start_subjob_time)
         }
         output["results"].append(result)

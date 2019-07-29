@@ -1,11 +1,119 @@
 [
     {
-        "name": "5hz_highpass_filtering#x2_downsampling",
+        "name": "5hz_hp_filter#x2_downsampling#XY_scale",
         "preprocessing_pipeline": [
             {
                 "function_name": "high_pass_filtering",
                 "kwargs": {
                     "cutoff_frequency": 5
+                }
+            },
+            {
+                "function_name": "downsample",
+                "kwargs": {
+                    "x_times": 2
+                }
+            },
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
+            }
+        ]
+    },
+    {
+        "name": "x2_downsampling#XY_scale",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "downsample",
+                "kwargs": {
+                    "x_times": 2
+                }
+            },
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
+            }
+        ]
+    },
+    {
+        "name": "40hz_hp_filter#x2_downsampling#XY_scale",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "high_pass_filtering",
+                "kwargs": {
+                    "cutoff_frequency": 40
+                }
+            },
+            {
+                "function_name": "downsample",
+                "kwargs": {
+                    "x_times": 2
+                }
+            },
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
+            }
+        ]
+    },
+    {
+        "name": "5hz_hp_filter#x2_downsampling",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "high_pass_filtering",
+                "kwargs": {
+                    "cutoff_frequency": 5
+                }
+            },
+            {
+                "function_name": "downsample",
+                "kwargs": {
+                    "x_times": 2
+                }
+            }
+        ]
+    },
+    {
+        "name": "10hz_hp_filter#x2_downsampling",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "high_pass_filtering",
+                "kwargs": {
+                    "cutoff_frequency": 10
+                }
+            },
+            {
+                "function_name": "downsample",
+                "kwargs": {
+                    "x_times": 2
+                }
+            }
+        ]
+    },
+    {
+        "name": "15hz_hp_filter#x2_downsampling",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "high_pass_filtering",
+                "kwargs": {
+                    "cutoff_frequency": 15
+                }
+            },
+            {
+                "function_name": "downsample",
+                "kwargs": {
+                    "x_times": 2
+                }
+            }
+        ]
+    },
+    {
+        "name": "25hz_hp_filter#x2_downsampling",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "high_pass_filtering",
+                "kwargs": {
+                    "cutoff_frequency": 25
                 }
             },
             {
@@ -28,7 +136,7 @@
         ]
     },
     {
-        "name": "signals_and_targets_standart_scaling",
+        "name": "XY_scale",
         "preprocessing_pipeline": [
             {
                 "function_name": "signals_and_targets_standart_scaling",
@@ -37,7 +145,7 @@
         ]
     },
     {
-        "name": "signals_and_targets_standart_scaling#10hz_highpass_filtering",
+        "name": "XY_scale#10hz_hp_filter",
         "preprocessing_pipeline": [
             {
                 "function_name": "signals_and_targets_standart_scaling",
@@ -52,7 +160,7 @@
         ]
     },
     {
-        "name": "signals_and_targets_standart_scaling#5hz_highpass_filtering",
+        "name": "XY_scale#5hz_hp_filter",
         "preprocessing_pipeline": [
             {
                 "function_name": "signals_and_targets_standart_scaling",
@@ -67,7 +175,7 @@
         ]
     },
     {
-        "name": "signals_and_targets_standart_scaling#x8_downsampling",
+        "name": "XY_scale#x8_downsampling",
         "preprocessing_pipeline": [
             {
                 "function_name": "signals_and_targets_standart_scaling",
@@ -82,7 +190,7 @@
         ]
     },
     {
-        "name": "signals_and_targets_standart_scaling#10hz_highpass_filtering#x8_downsampling",
+        "name": "XY_scale#10hz_hp_filter#x8_downsampling",
         "preprocessing_pipeline": [
             {
                 "function_name": "signals_and_targets_standart_scaling",
@@ -103,7 +211,7 @@
         ]
     },
     {
-        "name": "signals_and_targets_standart_scaling#5hz_highpass_filtering#x8_downsampling",
+        "name": "XY_scale#5hz_hp_filter#x8_downsampling",
         "preprocessing_pipeline": [
             {
                 "function_name": "signals_and_targets_standart_scaling",
@@ -124,7 +232,7 @@
         ]
     },
     {
-        "name": "signals_and_targets_standart_scaling#2hz_highpass_filtering#x8_downsampling",
+        "name": "XY_scale#2hz_hp_filter#x8_downsampling",
         "preprocessing_pipeline": [
             {
                 "function_name": "signals_and_targets_standart_scaling",
@@ -145,7 +253,7 @@
         ]
     },
     {
-        "name": "change_target_to_speed#signals_and_targets_standart_scaling#x8_downsampling",
+        "name": "change_target_to_speed#XY_scale#x8_downsampling",
         "preprocessing_pipeline": [
             {
                 "function_name": "change_target_to_speed",
