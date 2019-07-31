@@ -91,5 +91,10 @@
         "name": "lasso_regression",
         "model_base_class": "LassoRegressionModel",
         "kwargs": {}
+    },
+    {
+        "name": "iterative_2D_regression",
+        "model_base_class": "Iterative2DRegressionModel",
+        "kwargs": {}
     }
 ]

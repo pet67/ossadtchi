@@ -1,10 +1,18 @@
+import copy
+import math
+
+import numpy as np
+import scipy
+import scipy.signal
+import sklearn
+import sklearn.linear_model
+from tqdm import tqdm
+
 import tensorflow as tf
 from tensorflow.python.client import device_lib
 config = tf.ConfigProto()  # noqa
 config.gpu_options.allow_growth = True  # noqa
 sess = tf.Session(config=config)  # noqa
-
-from tqdm import tqdm
 
 import keras
 from keras.layers import Input
@@ -12,29 +20,16 @@ from keras.models import Model
 from keras import optimizers
 from keras import backend as K
 
-import keras
-from keras.layers.core import Activation, Dense, Dropout, SpatialDropout1D
-from keras.layers.convolutional import Conv1D
-from keras.layers.normalization import BatchNormalization
-from keras.layers.pooling import MaxPooling1D, GlobalAveragePooling1D
-import math
-
+import torch
 from torch.autograd import Variable
-import torch, torch.nn as nn
+import torch.nn as nn
 import torch.nn.functional as F
 
-
-import copy
-import sklearn
-import sklearn.linear_model
-
-import scipy
-import scipy.signal
-
-import numpy as np
-
-import models_lib
-import models_lib.common
+import library.models_lib
+import library.models_lib.common
+import library.models_lib.keras_nets
+import library.models_lib.torch_nets
+import library.models_lib.other_models
 
 
 class BenchModel:
@@ -49,6 +44,28 @@ class BenchModel:
 
     def slice_target(self, Y):
         return Y
+    
+
+class Iterative2DRegressionModel(BenchModel):
+    def __init__(self, input_shape, output_shape, frequency, output_filtration=True):
+        self.frequency = frequency
+        self.output_filtration = output_filtration
+
+    def fit(self, X_train, Y_train, X_test, Y_test):
+        self.model = library.models_lib.other_models.Iterative2DRegression(self.frequency)
+        X_train_3D = library.models_lib.common.get_narrowband_features(X_train, self.frequency)
+        X_test_3D = library.models_lib.common.get_narrowband_features(X_test, self.frequency)
+
+        self.model.fit(X_train_3D, Y_train, X_test_3D, Y_test)
+
+    def predict(self, X):
+        X_3D = library.models_lib.common.get_narrowband_features(X, self.frequency)
+        Y_predicted = self.model.predict(X_3D)
+        if self.output_filtration:
+            Y_predicted_filtered = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency)
+        else:
+            Y_predicted_filtered = Y_predicted
+        return Y_predicted_filtered
 
 
 class BaselineNet(BenchModel):
@@ -74,7 +91,7 @@ class BaselineNet(BenchModel):
         optimizer = keras.optimizers.Adam(lr=self.learning_rate)
 
         inputs = Input(shape=(lag_backward + lag_forward + 1, self.number_of_input_channels))
-        predictions = models_lib.baseline_net.baseline(inputs, self.number_of_output_channels)
+        predictions = library.models_lib.baseline_net.baseline(inputs, self.number_of_output_channels)
         self.model = Model(inputs=inputs, outputs=predictions)
         self.model.compile(optimizer=optimizer, loss='mse')
 
@@ -83,8 +100,8 @@ class BaselineNet(BenchModel):
         train_data_generator = data_generator(X_train, Y_train, self.batch_size, self.lag_backward, self.lag_forward)
         test_data_generator = data_generator(X_test, Y_test, self.batch_size, self.lag_backward, self.lag_forward)
 
-        train_data_steps = models_lib.common.calculate_batches_number(X_train.shape[0], self.total_lag, self.batch_size)
-        test_data_steps = models_lib.common.calculate_batches_number(X_test.shape[0], self.total_lag, self.batch_size)
+        train_data_steps = library.models_lib.common.calculate_batches_number(X_train.shape[0], self.total_lag, self.batch_size)
+        test_data_steps = library.models_lib.common.calculate_batches_number(X_test.shape[0], self.total_lag, self.batch_size)
 
         self.model.fit_generator(
             generator=train_data_generator,
@@ -98,7 +115,7 @@ class BaselineNet(BenchModel):
 
     def predict(self, X):
         full_data_generator = data_generator(X, [], self.batch_size, self.lag_backward, self.lag_forward)
-        full_data_steps = models_lib.common.calculate_batches_number(X.shape[0], self.total_lag, self.batch_size)
+        full_data_steps = library.models_lib.common.calculate_batches_number(X.shape[0], self.total_lag, self.batch_size)
         Y_predicted = self.model.predict_generator(
             generator=full_data_generator,
             steps=full_data_steps
@@ -115,13 +132,13 @@ class LinearRegressionModel(BenchModel):
         self.output_filtration = output_filtration
 
     def fit(self, X_train, Y_train, X_test, Y_test):
-        self.best_channels_combination = models_lib.common.get_best_combination(X_train, Y_train, X_test, Y_test, self.frequency)
-        X_train_new = models_lib.common.get_narrowband_features(X_train[, self.best_channels_combination], self.frequency)
+        self.best_channels_combination = library.models_lib.common.get_best_combination_flat(X_train, Y_train, X_test, Y_test, self.frequency)
+        X_train_new = library.models_lib.common.get_narrowband_features_flat(X_train[:, self.best_channels_combination], self.frequency)
         self.model = sklearn.linear_model.LinearRegression()
         self.model.fit(X_train_new, Y_train)
 
     def predict(self, X):
-        X_new = self.get_features(X[, self.best_channels_combination], self.frequency)
+        X_new = library.models_lib.common.get_narrowband_features_flat(X_train[:, self.best_channels_combination], self.frequency)
         Y_predicted = self.model.predict(X_new)
         if output_filtration:
             Y_predicted_filtered = final_lowpass_filtering(Y_predicted, self.frequency)
@@ -130,7 +147,7 @@ class LinearRegressionModel(BenchModel):
         return Y_predicted_filtered
 
 
-def LinearRegressionWithRegularization(BenchModel):
+class LinearRegressionWithRegularization(BenchModel):
     MODEL = None
     def __init__(self, input_shape, output_shape, frequency, output_filtration=True):
         assert self.MODEL is not None
@@ -138,13 +155,13 @@ def LinearRegressionWithRegularization(BenchModel):
         self.output_filtration = output_filtration
 
     def fit(self, X_train, Y_train, X_test, Y_test):
-        best_alpha = models_lib.common.get_best_alpha(X_train, Y_train, X_test, Y_test, self.frequency, self.MODEL)
+        best_alpha = library.models_lib.common.get_best_alpha(X_train, Y_train, X_test, Y_test, self.frequency, self.MODEL)
         self.model = self.MODEL(alpha=best_alpha, fit_intercept=True, normalize=True)
-        X_train_new = models_lib.common.get_narrowband_features(X_train, self.frequency)
+        X_train_new = library.models_lib.common.get_narrowband_features(X_train, self.frequency)
         self.model.fit(X_train_new, Y_train)
 
     def predict(self, X):
-        X_new = models_lib.common.get_narrowband_features(X, self.frequency)
+        X_new = library.models_lib.common.get_narrowband_features(X, self.frequency)
         Y_predicted = self.model.predict(X_new)
         if len(Y_predicted.shape) == 1:
             Y_predicted = Y_predicted.reshape((-1, 1)) # Unexpectedly lasso returns (*,) dimension instead (*, 1)
@@ -189,9 +206,7 @@ class NewSimplePytorchNet(BenchModel):
             self.bench_model.fit(copy.deepcopy(X_train), copy.deepcopy(Y_train), copy.deepcopy(X_test), copy.deepcopy(Y_test))
             self.best_channels_combination = self.bench_model.best_channels_combination
             X_train = X_train[:, self.best_channels_combination]
-            
-            
-            
+
         self.model = simple_net(X_train.shape[1], self.number_of_output_channels, self.lag_backward, self.lag_forward).cuda()
         self.loss_function = nn.MSELoss()
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr = self.learning_rate)
@@ -238,7 +253,7 @@ class NewSimplePytorchNet(BenchModel):
         if self.best_channels_only:
             X = X[:, self.best_channels_combination]
         full_data_generator = data_generator(X, [], self.batch_size, self.lag_backward, self.lag_forward)
-        full_data_steps = models_lib.common.calculate_batches_number(X.shape[0], self.total_lag, self.batch_size)
+        full_data_steps = library.models_lib.common.calculate_batches_number(X.shape[0], self.total_lag, self.batch_size)
         Y_predicted = []
         for batch_number, x_batch in enumerate(full_data_generator):
             self.model.eval()
@@ -256,4 +271,3 @@ class NewSimplePytorchNet(BenchModel):
 
     def slice_target(self, Y):
         return Y[self.lag_backward : -self.lag_forward if self.lag_forward > 0 else None]
-

@@ -101,6 +101,13 @@ def load_and_check_jobs(jobs_filepath, configs, output_folder):
         jobs[index] = check_and_load_ref_functions(jobs[index])
     return jobs
 
+def get_correlations_list(Y_sliced, Y_predicted):
+    correlations_list = []
+    for i in range(Y_sliced.shape[1]):
+        correlation = np.corrcoef(Y_sliced[:, i], Y_predicted[:, i], rowvar=False)[0, 1]
+        correlations_list.append(float(correlation))
+    return correlations_list
+
 
 def process(job):
     start_time = time.time()
@@ -163,8 +170,8 @@ def process(job):
             #"Y_train_sliced": Y_train_sliced.tolist(),
             #"Y_test_predicted": Y_test_predicted.tolist(),
             #"Y_test_sliced": Y_test_sliced.tolist(),
-            "train_correlation": np.corrcoef(Y_train_sliced, Y_train_predicted, rowvar=False).tolist(),
-            "test_correlation": np.corrcoef(Y_test_sliced, Y_test_predicted, rowvar=False).tolist(),
+            "train_correlation": get_correlations_list(Y_train_sliced, Y_train_predicted),
+            "test_correlation": get_correlations_list(Y_test_sliced, Y_test_predicted),
             "execution_time": float(end_subjob_time - start_subjob_time)
         }
         output["results"].append(result)

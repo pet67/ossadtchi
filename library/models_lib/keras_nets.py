@@ -1,3 +1,10 @@
+import keras
+from keras.layers.core import Activation, Dense, Dropout, SpatialDropout1D
+from keras.layers.convolutional import Conv1D
+from keras.layers.normalization import BatchNormalization
+from keras.layers.pooling import MaxPooling1D, GlobalAveragePooling1D
+
+
 def baseline(x, output_channels):
 
     for nb_filters in [10, 25, 35, 50]:

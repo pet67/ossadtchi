@@ -1,3 +1,9 @@
+import torch
+from torch.autograd import Variable
+import torch.nn as nn
+import torch.nn.functional as F
+
+
 class envelope_detector(nn.Module):
     def __init__(self, in_channels, channels_per_channel):
         super(self.__class__,self).__init__()

@@ -1,6 +1,6 @@
 [
     {
-        "name": "5hz_hp_filter#x2_downsampling#XY_scale",
+        "name": "5hz_hp_filter#x4_downsampling#XY_scale",
         "preprocessing_pipeline": [
             {
                 "function_name": "high_pass_filtering",
@@ -11,7 +11,7 @@
             {
                 "function_name": "downsample",
                 "kwargs": {
-                    "x_times": 2
+                    "x_times": 4
                 }
             },
             {
@@ -27,6 +27,21 @@
                 "function_name": "downsample",
                 "kwargs": {
                     "x_times": 2
+                }
+            },
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
+            }
+        ]
+    },
+    {
+        "name": "x4_downsampling#XY_scale",
+        "preprocessing_pipeline": [
+            {
+                "function_name": "downsample",
+                "kwargs": {
+                    "x_times": 4
                 }
             },
             {
@@ -190,12 +205,8 @@
         ]
     },
     {
-        "name": "XY_scale#10hz_hp_filter#x8_downsampling",
+        "name": "10hz_hp_filter#x8_downsampling#XY_scale",
         "preprocessing_pipeline": [
-            {
-                "function_name": "signals_and_targets_standart_scaling",
-                "kwargs": {}
-            },
             {
                 "function_name": "high_pass_filtering",
                 "kwargs": {
@@ -207,16 +218,16 @@
                 "kwargs": {
                     "x_times": 8
                 }
+            },
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
             }
         ]
     },
     {
-        "name": "XY_scale#5hz_hp_filter#x8_downsampling",
+        "name": "5hz_hp_filter#x8_downsampling#XY_scale",
         "preprocessing_pipeline": [
-            {
-                "function_name": "signals_and_targets_standart_scaling",
-                "kwargs": {}
-            },
             {
                 "function_name": "high_pass_filtering",
                 "kwargs": {
@@ -228,6 +239,10 @@
                 "kwargs": {
                     "x_times": 8
                 }
+            },
+            {
+                "function_name": "signals_and_targets_standart_scaling",
+                "kwargs": {}
             }
         ]
     },

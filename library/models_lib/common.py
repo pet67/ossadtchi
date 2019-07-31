@@ -1,3 +1,9 @@
+import numpy as np
+import scipy
+import scipy.signal
+import sklearn
+import sklearn.linear_model
+
 def data_generator(X, Y, b_size, lag_backward, lag_forward):
     total_lag = lag_backward + lag_forward
     all_b = (X.shape[0] - total_lag) / b_size
@@ -36,6 +42,8 @@ def final_lowpass_filtering(Y_predicted, frequency):
 
 
 def get_narrowband_features(X, frequency):
+    assert len(X.shape) == 2
+    assert X.shape[0] > X.shape[1]
     NumFIRTaps = 257
     cutoff_frequency_for_abs_values = 0.5
     f0 = [0.5, 1, 2, 3, 4] + list(range(5, 150, 5))
@@ -44,7 +52,7 @@ def get_narrowband_features(X, frequency):
     for i, f in enumerate(f0):
         b[i, :] = scipy.signal.firwin(NumFIRTaps, [0.9 * f / (frequency / 2), 1.1 * f / (frequency / 2)], pass_zero=False)
     X_new = []
-    for channel in range(len(X.shape[0])):
+    for channel in range(X.shape[1]):
         X_new_single = np.zeros((X.shape[0], len(f0)))
         for i in range(number_of_filters):
             X_new_single[:, i] = scipy.signal.filtfilt(b[i, :], [1], X[:, channel])
@@ -53,7 +61,14 @@ def get_narrowband_features(X, frequency):
         for i in range(X_new_single.shape[1]):
             X_new_single[:, i] = scipy.signal.filtfilt(b_hp_05, a_hp_05, X_new_single[:, i])
         X_new.append(X_new_single)
-    return np.concatenate(X_new, axis=1)
+
+    X_output = np.transpose(np.array(X_new), [1, 0, 2])
+    return X_output
+
+
+def get_narrowband_features_flat(X, frequency):
+    X_3D = get_narrowband_features(X, frequency)
+    return X_3D.reshape(X_3D.shape[0], -1)
 
 
 def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, model_class=sklearn.linear_model.LinearRegression, max_number_of_combinations=5, output_filtration=True):
@@ -75,9 +90,9 @@ def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, m
     best_channels_combination = None
     for channels_number in range(1, max_number_of_combinations + 1):
         model = model_class()
-        X_train_new = get_narrowband_features(X_train[:, [:channels_number]], frequency)
+        X_train_new = get_narrowband_features(X_train[:, best_channels_list[:channels_number]], frequency)
         model.fit(X_train_new, Y_train)
-        X_test_new = get_narrowband_features(X_test[:, [:channels_number]], frequency)
+        X_test_new = get_narrowband_features(X_test[:, best_channels_list[:channels_number]], frequency)
         Y_predicted = model.predict(X_test_new)
         if output_filtration:
             Y_predicted_filtered = final_lowpass_filtering(Y_predicted, frequency)
