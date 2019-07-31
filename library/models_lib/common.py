@@ -1,3 +1,5 @@
+import math
+
 import numpy as np
 import scipy
 import scipy.signal
@@ -71,13 +73,14 @@ def get_narrowband_features_flat(X, frequency):
     return X_3D.reshape(X_3D.shape[0], -1)
 
 
-def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, model_class=sklearn.linear_model.LinearRegression, max_number_of_combinations=5, output_filtration=True):
+def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration=True, model_class=sklearn.linear_model.LinearRegression,  max_number_of_combinations=5):
+    print("Get best")
     results = {}
     for channel in range(X_train.shape[1]):
         model = model_class()
-        X_train_new = get_narrowband_features(X_train, frequency)
+        X_train_new = get_narrowband_features_flat(X_train[:, [channel]], frequency)
+        X_test_new = get_narrowband_features_flat(X_test[:, [channel]], frequency)
         model.fit(X_train_new, Y_train)
-        X_test_new = get_narrowband_features(X_test, frequency)
         Y_predicted = model.predict(X_test_new)
         Y_predicted_filtered = final_lowpass_filtering(Y_predicted, frequency)
         test_corr = np.corrcoef(Y_predicted_filtered.reshape(1, -1), Y_test.reshape(1, -1))[0, 1]
@@ -90,9 +93,9 @@ def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, m
     best_channels_combination = None
     for channels_number in range(1, max_number_of_combinations + 1):
         model = model_class()
-        X_train_new = get_narrowband_features(X_train[:, best_channels_list[:channels_number]], frequency)
+        X_train_new = get_narrowband_features_flat(X_train[:, best_channels_list[:channels_number]], frequency)
         model.fit(X_train_new, Y_train)
-        X_test_new = get_narrowband_features(X_test[:, best_channels_list[:channels_number]], frequency)
+        X_test_new = get_narrowband_features_flat(X_test[:, best_channels_list[:channels_number]], frequency)
         Y_predicted = model.predict(X_test_new)
         if output_filtration:
             Y_predicted_filtered = final_lowpass_filtering(Y_predicted, frequency)

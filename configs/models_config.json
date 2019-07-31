@@ -32,49 +32,23 @@
         }
     },
     {
-        "name": "experement_pytorch_net_200_0",
-        "model_base_class": "ExperementPytorchNet",
-        "kwargs": {
-            "lag_backward": 200,
-            "lag_forward": 0
-        }
-    },
-    {
-        "name": "new_experement_pytorch_net_200_0",
+        "name": "simple_pytorch_net_100_100",
         "model_base_class": "NewSimplePytorchNet",
         "kwargs": {
-            "lag_backward": 200,
-            "lag_forward": 0,
-            "low_pass_filtering": false,
-            "best_channels_only": false
-        }
-    },
-    {
-        "name": "new_experement_pytorch_net_200_0_lowpass_filtered",
-        "model_base_class": "NewSimplePytorchNet",
-        "kwargs": {
-            "lag_backward": 200,
-            "lag_forward": 0,
-            "low_pass_filtering": true,
-            "best_channels_only": false
-        }
-    },
-    {
-        "name": "new_experement_pytorch_net_200_0_lowpass_filtered_and_best_channles_only",
-        "model_base_class": "NewSimplePytorchNet",
-        "kwargs": {
-            "lag_backward": 200,
-            "lag_forward": 0,
-            "low_pass_filtering": true,
+            "lag_backward": 100,
+            "lag_forward": 100,
+            "output_filtration": true,
             "best_channels_only": true
         }
     },
     {
         "name": "simple_pytorch_net_200_0",
-        "model_base_class": "SimplePytorchNet",
+        "model_base_class": "NewSimplePytorchNet",
         "kwargs": {
             "lag_backward": 200,
-            "lag_forward": 0
+            "lag_forward": 0,
+            "output_filtration": true,
+            "best_channels_only": true
         }
     },
     {
