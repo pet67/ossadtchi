@@ -54,7 +54,7 @@ class Iterative2DRegression:
 
     def get_expanded_channels_dim_tensor(self, X):
         return torch.Tensor(np.expand_dims(X, axis=1))
-    
+
     def update_best_params(self,):
         self.best_W = self.W
         self.best_alpha_w = self.alpha_w
@@ -91,8 +91,8 @@ class Iterative2DRegression:
 
             Y_predicted = self.predict_inner(X_test_3D)
             Y_predicted_filtered = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency)
-            corr_before_filtration = np.corrcoef(Y_predicted, Y_test, rowvar=False)[0,1]
-            corr_after_filtration = np.corrcoef(Y_predicted_filtered, Y_test, rowvar=False)[0,1]
+            corr_before_filtration = np.corrcoef(Y_predicted, Y_test, rowvar=False)[0, 1]
+            corr_after_filtration = np.corrcoef(Y_predicted_filtered, Y_test, rowvar=False)[0, 1]
             corr = max(corr_before_filtration, corr_after_filtration)
             if corr > best_corr:
                 best_corr = corr
@@ -100,7 +100,6 @@ class Iterative2DRegression:
             sys.stderr.write(f"{iteration}:\t{round(corr_after_filtration, 2)}\t{round(corr_before_filtration, 2)}\t{round(best_corr, 2)}\n")
 
         self.apply_best_params()
-
 
     def predict_inner(self, X_3D):
         WtX = self.convolution_and_reshaping(X_3D, 'channels')

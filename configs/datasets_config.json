@@ -1640,7 +1640,7 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     },
     {
         "name": "11072019_Bioelectric_Bez_arbuza#7_right_index_60s_07-10_19-31-54#h5",
@@ -1653,7 +1653,7 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     },
     {
         "name": "11072019_Bioelectric_Bez_arbuza#8_right_middle_60s_07-10_19-33-33#h5",
@@ -1666,7 +1666,7 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     },
     {
         "name": "11072019_Bioelectric_Bez_arbuza#9_right_ring_60s_07-10_19-36-16#h5",
@@ -1679,7 +1679,7 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     },
     {
         "name": "11072019_Bioelectric_Bez_arbuza#10_right_little_60s_07-10_19-37-32#h5",
@@ -1692,7 +1692,7 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     },
     {
         "name": "11072019_Bioelectric_S_arbuzom#6_right_thumb_60s_07-10_19-46-05#h5",
@@ -1705,7 +1705,7 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     },
     {
         "name": "11072019_Bioelectric_S_arbuzom#7_right_index_60s_07-10_19-47-24#h5",
@@ -1718,7 +1718,7 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     },
     {
         "name": "11072019_Bioelectric_S_arbuzom#8_right_middle_60s_07-10_19-48-43#h5",
@@ -1731,7 +1731,7 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     },
     {
         "name": "11072019_Bioelectric_S_arbuzom#9_right_ring_60s_07-10_19-49-58#h5",
@@ -1744,7 +1744,7 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     },
     {
         "name": "11072019_Bioelectric_S_arbuzom#10_right_little_60s_07-10_19-51-18#h5",
@@ -1757,6 +1757,6 @@
         "source": "Bioelectric",
         "date": "11/07/2019",
         "frequency": 2000,
-        "data_loader": "h5_data_loader"
+        "data_loader": "h5_data_loader_57_channels"
     }
 ]

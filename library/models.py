@@ -1,29 +1,23 @@
 import copy
-import math
-
 import numpy as np
-import scipy
-import scipy.signal
 import sklearn
 import sklearn.linear_model
 from tqdm import tqdm
 
-import tensorflow as tf
-from tensorflow.python.client import device_lib
+import tensorflow as tf # noqa
+from tensorflow.python.client import device_lib # noqa
 config = tf.ConfigProto()  # noqa
 config.gpu_options.allow_growth = True  # noqa
 sess = tf.Session(config=config)  # noqa
 
 import keras
+import keras.optimizers
 from keras.layers import Input
 from keras.models import Model
-from keras import optimizers
-from keras import backend as K
 
 import torch
-from torch.autograd import Variable
-import torch.nn as nn
-import torch.nn.functional as F
+import torch.nn
+import torch.autograd
 
 import library.models_lib
 import library.models_lib.common
@@ -44,7 +38,7 @@ class BenchModel:
 
     def slice_target(self, Y):
         return Y
-    
+
 
 class Iterative2DRegressionModel(BenchModel):
     def __init__(self, input_shape, output_shape, frequency, output_filtration=True):
@@ -69,7 +63,7 @@ class Iterative2DRegressionModel(BenchModel):
 
 
 class BaselineNet(BenchModel):
-    def __init__(self, input_shape, output_shape, frequency,  lag_backward, lag_forward):
+    def __init__(self, input_shape, output_shape, frequency, lag_backward, lag_forward):
         assert len(input_shape) == len(output_shape) == 1
         assert lag_backward >= 0
         assert lag_forward >= 0
@@ -80,8 +74,8 @@ class BaselineNet(BenchModel):
         self.batch_size = 40
         self.learning_rate = 0.0003
         self.callbacks = [
-                keras.callbacks.EarlyStopping(patience=4),
-                keras.callbacks.TerminateOnNaN(),
+            keras.callbacks.EarlyStopping(patience=4),
+            keras.callbacks.TerminateOnNaN(),
         ]
 
         self.lag_backward = lag_backward
@@ -94,7 +88,6 @@ class BaselineNet(BenchModel):
         predictions = library.models_lib.baseline_net.baseline(inputs, self.number_of_output_channels)
         self.model = Model(inputs=inputs, outputs=predictions)
         self.model.compile(optimizer=optimizer, loss='mse')
-
 
     def fit(self, X_train, Y_train, X_test, Y_test):
         train_data_generator = library.models_lib.common.data_generator(X_train, Y_train, self.batch_size, self.lag_backward, self.lag_forward)
@@ -123,7 +116,7 @@ class BaselineNet(BenchModel):
         return Y_predicted
 
     def slice_target(self, Y):
-        return Y[self.lag_backward : -self.lag_forward if self.lag_forward > 0 else None]
+        return Y[self.lag_backward:-self.lag_forward if self.lag_forward > 0 else None]
 
 
 class LinearRegressionModel(BenchModel):
@@ -149,6 +142,7 @@ class LinearRegressionModel(BenchModel):
 
 class LinearRegressionWithRegularization(BenchModel):
     MODEL = None
+
     def __init__(self, input_shape, output_shape, frequency, output_filtration=True):
         assert self.MODEL is not None
         self.frequency = frequency
@@ -164,8 +158,8 @@ class LinearRegressionWithRegularization(BenchModel):
         X_new = library.models_lib.common.get_narrowband_features(X, self.frequency)
         Y_predicted = self.model.predict(X_new)
         if len(Y_predicted.shape) == 1:
-            Y_predicted = Y_predicted.reshape((-1, 1)) # Unexpectedly lasso returns (*,) dimension instead (*, 1)
-        if output_filtration:
+            Y_predicted = Y_predicted.reshape((-1, 1))  # Unexpectedly lasso returns (*,) dimension instead (*, 1)
+        if self.output_filtration:
             Y_predicted_filtered = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency)
         else:
             Y_predicted_filtered = Y_predicted
@@ -202,8 +196,8 @@ class NewSimplePytorchNet(BenchModel):
             X_train = X_train[:, self.best_channels_combination]
 
         self.model = library.models_lib.torch_nets.simple_net(X_train.shape[1], Y_train.shape[1], self.lag_backward, self.lag_forward).cuda()
-        self.loss_function = nn.MSELoss()
-        self.optimizer = torch.optim.Adam(self.model.parameters(), lr = self.learning_rate)
+        self.loss_function = torch.nn.MSELoss()
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
 
         train_data_generator = library.models_lib.common.data_generator(X_train, Y_train, self.batch_size, self.lag_backward, self.lag_forward)
         Y_test_sliced = self.slice_target(Y_test)
@@ -212,23 +206,23 @@ class NewSimplePytorchNet(BenchModel):
         max_test_corr = -1
         for batch_number, (x_batch, y_batch) in enumerate(train_data_generator):
             self.model.train()
-            assert x_batch.shape[0]==y_batch.shape[0]
-            x_batch = Variable(torch.FloatTensor(x_batch)).cuda()
-            y_batch = Variable(torch.FloatTensor(y_batch)).cuda()
+            assert x_batch.shape[0] == y_batch.shape[0]
+            x_batch = torch.autograd.Variable(torch.FloatTensor(x_batch)).cuda()
+            y_batch = torch.autograd.Variable(torch.FloatTensor(y_batch)).cuda()
             self.optimizer.zero_grad()
             y_predicted = self.model(x_batch)
-            loss = self.loss_function(y_predicted,y_batch)
+            loss = self.loss_function(y_predicted, y_batch)
             loss.backward()
             self.optimizer.step()
-            loss_history.append(loss.cpu().data.numpy())    
+            loss_history.append(loss.cpu().data.numpy())
             pbar.update(1)
-            eval_lag = min(100,len(loss_history))
-            pbar.set_postfix(loss = np.mean(loss_history[-eval_lag:]))
+            eval_lag = min(100, len(loss_history))
+            pbar.set_postfix(loss=np.mean(loss_history[-eval_lag:]))
             if len(loss_history) % 250 == 0:
                 Y_predicted = self.predict(X_test)
                 test_corr_list = []
                 for i in range(Y_predicted.shape[1]):
-                    test_corr = np.corrcoef(Y_predicted[:, i], Y_test_sliced[:, i], rowvar=False)[0,1]
+                    test_corr = np.corrcoef(Y_predicted[:, i], Y_test_sliced[:, i], rowvar=False)[0, 1]
                     test_corr_list.append(test_corr)
                 mean_corr = np.mean(test_corr_list)
                 print("Correlation test:", mean_corr)
@@ -250,12 +244,12 @@ class NewSimplePytorchNet(BenchModel):
         Y_predicted = []
         for batch_number, x_batch in enumerate(full_data_generator):
             self.model.eval()
-            x_batch = Variable(torch.FloatTensor(x_batch)).cuda()
+            x_batch = torch.autograd.Variable(torch.FloatTensor(x_batch)).cuda()
             y_predicted = self.model(x_batch).cpu().data.numpy()
             Y_predicted.append(y_predicted)
             if batch_number >= full_data_steps - 1:
                 break
-        Y_predicted = np.concatenate(Y_predicted, axis = 0)
+        Y_predicted = np.concatenate(Y_predicted, axis=0)
         if self.output_filtration:
             Y_predicted_filtered = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency)
             return Y_predicted_filtered
@@ -263,4 +257,4 @@ class NewSimplePytorchNet(BenchModel):
             return Y_predicted
 
     def slice_target(self, Y):
-        return Y[self.lag_backward : -self.lag_forward if self.lag_forward > 0 else None]
+        return Y[self.lag_backward:-self.lag_forward if self.lag_forward > 0 else None]

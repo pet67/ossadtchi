@@ -1,27 +1,23 @@
-# coding=utf-8
 import copy
+import json
 import os
 import random
 import sys
-import os
-import scipy
-import scipy.io
-import json
-import sklearn
-import numpy as np
 import time
+
+import numpy as np
 
 from . import models
 from . import preprocessing
 from . import real_data_loaders
-from . import simulated_data_generators
+# from . import simulated_data_generators # Not ready yet
 from . import splitters
 
 
-from . import real_data_loaders
-
-
-CONFIGS_SET = {"channels_config", "targets_config", "datasets_config", "splitters_config", "models_config", "preprocess_config", "synthetic_config"}
+CONFIGS_SET = {
+    "channels_config", "targets_config", "datasets_config",
+    "splitters_config", "models_config", "preprocess_config", "synthetic_config"
+}
 JOB_FIELDS_SET = {"data", "channels", "targets", "preprocess", "model", "splitter"}
 JOB_PARAMETERS_SEPARATOR = "__"
 
@@ -72,15 +68,15 @@ def check_and_load_ref_functions(job):
     loader_name = job["data"]["data_loader"]
     assert hasattr(real_data_loaders, loader_name)
     job["data"]["loader_reference"] = getattr(real_data_loaders, loader_name)
-    
+
     model_base_class_name = job["model"]["model_base_class"]
     assert hasattr(models, model_base_class_name)
     job["model"]["model_base_class_reference"] = getattr(models, model_base_class_name)
-    
+
     splitter_name = job["splitter"]["name"]
     assert hasattr(splitters, splitter_name)
     job["splitter"]["splitter_method_reference"] = getattr(splitters, splitter_name)
-    
+
     for index, preprecessing_stage in enumerate(job["preprocess"]["preprocessing_pipeline"]):
         preprocessing_stage_method_name = preprecessing_stage['function_name']
         assert hasattr(preprocessing, preprocessing_stage_method_name)
@@ -100,6 +96,7 @@ def load_and_check_jobs(jobs_filepath, configs, output_folder):
         assert os.path.exists(jobs[index]['data']['path'])
         jobs[index] = check_and_load_ref_functions(jobs[index])
     return jobs
+
 
 def get_correlations_list(Y_sliced, Y_predicted):
     correlations_list = []
@@ -140,7 +137,8 @@ def process(job):
     splitter = job["splitter"]["splitter_method_reference"]
     for X_train, Y_train, X_test, Y_test in splitter(X, Y):
         start_subjob_time = time.time()
-        assert len(Y_train.shape) == len(Y_test.shape) == 2, f"Expected get 2 demensional Y got: Y_train {Y_train.shape}, Y_test {Y_test.shape}"
+        assert len(Y_train.shape) == len(Y_test.shape) == 2, \
+            f"Expected get 2 demensional Y got: Y_train {Y_train.shape}, Y_test {Y_test.shape}"
         assert(Y_train.shape[1:] == Y_test.shape[1:])
         assert len(X_train) == len(X_test)
         assert len(X_train) >= 2
@@ -149,7 +147,7 @@ def process(job):
 
         input_shape = X_train.shape[1:]
         output_shape = Y_train.shape[1:]
-        
+
         bench_model_class = job["model"]["model_base_class_reference"]
         bench_model = bench_model_class(input_shape=input_shape, output_shape=output_shape, frequency=frequency, **job["model"]["kwargs"])
         bench_model.fit(copy.deepcopy(X_train), copy.deepcopy(Y_train), copy.deepcopy(X_test), copy.deepcopy(Y_test))
@@ -160,16 +158,19 @@ def process(job):
         Y_train_sliced = bench_model.slice_target(copy.deepcopy(Y_train))
         Y_test_sliced = bench_model.slice_target(copy.deepcopy(Y_test))
 
-        assert len(Y_train_predicted.shape) == len(Y_train_sliced.shape) == len(Y_test_predicted.shape) == len(Y_test_sliced.shape) == 2, f"Expected get 2 demensional Y got: Y_train_predicted {Y_train_predicted.shape}, Y_train_sliced {Y_train_sliced.shape}, Y_test_predicted {Y_test_predicted.shape}, Y_test_sliced {Y_test_sliced.shape}"
-        assert Y_train_predicted.shape == Y_train_sliced.shape, f'Y_train_predicted.shape {Y_train_predicted.shape} != Y_train_sliced.shape {Y_train_sliced.shape}'
-        assert Y_test_predicted.shape == Y_test_sliced.shape
+        assert len(Y_train_predicted.shape) == len(Y_train_sliced.shape) == len(Y_test_predicted.shape) == len(Y_test_sliced.shape) == 2, \
+            f"Expected get 2 demensional Y got: Y_train_predicted {Y_train_predicted.shape}, Y_train_sliced {Y_train_sliced.shape}, Y_test_predicted {Y_test_predicted.shape}, Y_test_sliced {Y_test_sliced.shape}"
+        assert Y_train_predicted.shape == Y_train_sliced.shape, \
+            f'Y_train_predicted.shape {Y_train_predicted.shape} != Y_train_sliced.shape {Y_train_sliced.shape}'
+        assert Y_test_predicted.shape == Y_test_sliced.shape, \
+            f'Y_test_predicted.shape {Y_test_predicted.shape} != Y_test_sliced.shape {Y_test_sliced.shape}'
 
         end_subjob_time = time.time()
         result = {
-            #"Y_train_predicted": Y_train_predicted.tolist(),
-            #"Y_train_sliced": Y_train_sliced.tolist(),
-            #"Y_test_predicted": Y_test_predicted.tolist(),
-            #"Y_test_sliced": Y_test_sliced.tolist(),
+            # "Y_train_predicted": Y_train_predicted.tolist(),
+            # "Y_train_sliced": Y_train_sliced.tolist(),
+            # "Y_test_predicted": Y_test_predicted.tolist(),
+            # "Y_test_sliced": Y_test_sliced.tolist(),
             "train_correlation": get_correlations_list(Y_train_sliced, Y_train_predicted),
             "test_correlation": get_correlations_list(Y_test_sliced, Y_test_predicted),
             "execution_time": float(end_subjob_time - start_subjob_time)
@@ -196,7 +197,7 @@ def runner(output_folder, jobs_filepath, configs_folder):
     sys.stderr.write('Configs successfully loaded\n')
     if len(jobs) == 0:
         sys.stderr.write('No undone jobs found\n')
-    while len(jobs) > 0:
+    while True:
         jobs = update_jobs(jobs)
         if len(jobs) == 0:
             sys.stderr.write('All Jobs Are DONE!\n')

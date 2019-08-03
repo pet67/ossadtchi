@@ -6,6 +6,7 @@ import scipy.signal
 import sklearn
 import sklearn.linear_model
 
+
 def data_generator(X, Y, b_size, lag_backward, lag_forward):
     total_lag = lag_backward + lag_forward
     all_b = (X.shape[0] - total_lag) / b_size
@@ -50,6 +51,7 @@ def get_narrowband_features(X, frequency):
     cutoff_frequency_for_abs_values = 0.5
     f0 = [0.5, 1, 2, 3, 4] + list(range(5, 150, 5))
     number_of_filters = len(f0)
+    b_hp_05, a_hp_05 = scipy.signal.butter(4, cutoff_frequency_for_abs_values / (frequency / 2), btype='high')
     b = np.zeros((number_of_filters, NumFIRTaps))
     for i, f in enumerate(f0):
         b[i, :] = scipy.signal.firwin(NumFIRTaps, [0.9 * f / (frequency / 2), 1.1 * f / (frequency / 2)], pass_zero=False)
@@ -59,7 +61,6 @@ def get_narrowband_features(X, frequency):
         for i in range(number_of_filters):
             X_new_single[:, i] = scipy.signal.filtfilt(b[i, :], [1], X[:, channel])
         X_new_single = np.absolute(X_new_single)
-        b_hp_05, a_hp_05 = scipy.signal.butter(4, cutoff_frequency_for_abs_values / (frequency / 2), btype='high')
         for i in range(X_new_single.shape[1]):
             X_new_single[:, i] = scipy.signal.filtfilt(b_hp_05, a_hp_05, X_new_single[:, i])
         X_new.append(X_new_single)
@@ -73,7 +74,7 @@ def get_narrowband_features_flat(X, frequency):
     return X_3D.reshape(X_3D.shape[0], -1)
 
 
-def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration=True, model_class=sklearn.linear_model.LinearRegression,  max_number_of_combinations=5):
+def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration=True, model_class=sklearn.linear_model.LinearRegression, max_number_of_combinations=5):
     print("Get best")
     results = {}
     for channel in range(X_train.shape[1]):
@@ -132,4 +133,3 @@ def get_best_alpha(X_train, Y_train, X_test, Y_test, frequency, model_class, out
 
 def calculate_batches_number(x_size, total_lag, b_size):
     return math.ceil((x_size - total_lag) / b_size)
-

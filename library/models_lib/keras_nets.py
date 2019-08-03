@@ -1,4 +1,5 @@
 import keras
+import keras.layers
 from keras.layers.core import Activation, Dense, Dropout, SpatialDropout1D
 from keras.layers.convolutional import Conv1D
 from keras.layers.normalization import BatchNormalization

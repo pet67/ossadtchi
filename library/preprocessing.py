@@ -1,8 +1,7 @@
-import sklearn
-import sklearn.preprocessing
-
 import scipy
 import scipy.signal
+import sklearn
+import sklearn.preprocessing
 
 
 def change_target_to_speed(X, Y, frequency):

@@ -1,6 +1,4 @@
-# coding=utf-8
 import argparse
-import sys
 import os
 import os.path
 
@@ -18,8 +16,7 @@ def parse_args():
     runner_parser.add_argument('-c', '--configs_folder', default="configs", required=False)
     runner_parser.add_argument('-o', '--output_folder', default="results", required=False)
 
-
-    clear_parser = subparsers.add_parser('clear')
+    # clear_parser = subparsers.add_parser('clear') # not ready yet
 
     parsed_args = parser.parse_args()
 
@@ -30,7 +27,8 @@ def parse_args():
             setattr(parsed_args, attr, abs_path)
             assert os.path.exists(abs_path), f'{abs_path} does not exist'
 
-    assert 'CUDA_VISIBLE_DEVICES' in os.environ, 'CUDA_VISIBLE_DEVICES should be specified'
+    assert 'CUDA_VISIBLE_DEVICES' in os.environ, \
+        'CUDA_VISIBLE_DEVICES should be specified'
 
     return parsed_args
 
@@ -38,7 +36,11 @@ def parse_args():
 if __name__ == '__main__':
     parsed_args = parse_args()
     if parsed_args.cmd == "runner":
-        library.runner.runner(parsed_args.output_folder, parsed_args.jobs_file, parsed_args.configs_folder)
+        library.runner.runner(
+            parsed_args.output_folder,
+            parsed_args.jobs_file,
+            parsed_args.configs_folder
+        )
     elif parsed_args.cmd == "clear":
         pass
     else:
