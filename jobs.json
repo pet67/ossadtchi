@@ -4,15 +4,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#10_right_little_60s_03-03_17-17-50#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -20,15 +12,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#10_right_little_60s_03-03_17-19-02#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -36,15 +20,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#1_left_little_60s_03-03_17-23-21#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -52,15 +28,7 @@
         "channels": "all64",
         "targets": "t6",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#2_left_ring_60s_03-03_17-24-39#mat",
-        "channels": "all64",
-        "targets": "t6",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -68,15 +36,7 @@
         "channels": "all64",
         "targets": "t7",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#3_left_middle_60s_03-03_17-26-01#mat",
-        "channels": "all64",
-        "targets": "t7",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -84,15 +44,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#4_left_index_60s_03-03_17-27-21#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -100,15 +52,7 @@
         "channels": "all64",
         "targets": "t9",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#5_left_thumb_60s_03-03_17-28-41#mat",
-        "channels": "all64",
-        "targets": "t9",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -116,15 +60,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#6_right_thumb_60s_03-03_17-07-05#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -132,15 +68,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#6_right_thumb_60s_03-03_17-08-17#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -148,15 +76,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#7_right_index_60s_03-03_17-09-44#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -164,15 +84,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#7_right_index_60s_03-03_17-10-55#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -180,15 +92,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#8_right_middle_60s_03-03_17-12-25#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -196,15 +100,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#8_right_middle_60s_03-03_17-13-43#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -212,15 +108,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#9_right_ring_60s_03-03_17-15-07#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -228,15 +116,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "030319_MGMSU_Klimashova#9_right_ring_60s_03-03_17-16-18#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -244,15 +124,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#10_right_little_60s_03-12_17-44-07#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -260,15 +132,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#10_right_little_60s_03-12_17-45-25#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -276,15 +140,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#6_right_thumb_60s_03-12_17-31-18#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -292,15 +148,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#6_right_thumb_60s_03-12_17-32-30#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -308,15 +156,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#7_right_index_60s_03-12_17-34-10#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -324,15 +164,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#7_right_index_60s_03-12_17-35-22#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -340,15 +172,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#8_right_middle_60s_03-12_17-37-42#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -356,15 +180,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#8_right_middle_60s_03-12_17-39-07#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -372,15 +188,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#9_right_ring_60s_03-12_17-40-41#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -388,15 +196,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "120319_MGMSU_Yatsuk#9_right_ring_60s_03-12_17-41-53#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -404,15 +204,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#10_right_little_60s_10-14_13-55-21#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -420,15 +212,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#1_left_little_60s_10-14_13-47-28#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -436,15 +220,7 @@
         "channels": "all64",
         "targets": "t6",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#2_left_ring_60s_10-14_13-48-55#mat",
-        "channels": "all64",
-        "targets": "t6",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -452,15 +228,7 @@
         "channels": "all64",
         "targets": "t7",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#3_left_middle_60s_10-14_13-50-13#mat",
-        "channels": "all64",
-        "targets": "t7",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -468,15 +236,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#4_left_index_60s_10-14_13-51-27#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -484,15 +244,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#4_left_index_60s_10-14_13-52-40#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -500,15 +252,7 @@
         "channels": "all64",
         "targets": "t9",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#5_left_thumb_60s_10-14_13-54-03#mat",
-        "channels": "all64",
-        "targets": "t9",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -516,15 +260,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#6_right_thumb_60s_10-14_14-00-22#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -532,15 +268,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#7_right_index_60s_10-14_13-59-10#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -548,15 +276,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#8_right_middle_60s_10-14_13-57-57#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -564,15 +284,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "141018_MGMSU_Chernov#9_right_ring_60s_10-14_13-56-41#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -580,15 +292,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#10_right_little_60s_10-15_14-00-22#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -596,15 +300,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#1_left_little_60s_10-15_13-54-00#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -612,15 +308,7 @@
         "channels": "all64",
         "targets": "t6",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#2_left_ring_60s_10-15_13-55-14#mat",
-        "channels": "all64",
-        "targets": "t6",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -628,15 +316,7 @@
         "channels": "all64",
         "targets": "t7",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#3_left_middle_60s_10-15_13-56-29#mat",
-        "channels": "all64",
-        "targets": "t7",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -644,15 +324,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#4_left_index_60s_10-15_13-57-45#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -660,15 +332,7 @@
         "channels": "all64",
         "targets": "t9",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#5_left_thumb_60s_10-15_13-59-04#mat",
-        "channels": "all64",
-        "targets": "t9",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -676,15 +340,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#6_right_thumb_60s_10-15_14-05-24#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -692,15 +348,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#7_right_index_60s_10-15_14-04-02#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -708,15 +356,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#8_right_middle_60s_10-15_14-02-49#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -724,15 +364,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "151018_MGMSU_Chernov#9_right_ring_60s_10-15_14-01-36#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -740,15 +372,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#10_right_little_60s_10-16_10-44-59#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -756,15 +380,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#1_left_little_60s_10-16_10-36-57#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -772,15 +388,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#1_left_little_60s_10-16_10-38-14#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -788,15 +396,7 @@
         "channels": "all64",
         "targets": "t6",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#2_left_ring_60s_10-16_10-39-31#mat",
-        "channels": "all64",
-        "targets": "t6",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -804,15 +404,7 @@
         "channels": "all64",
         "targets": "t7",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#3_left_middle_60s_10-16_10-40-53#mat",
-        "channels": "all64",
-        "targets": "t7",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -820,15 +412,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#4_left_index_60s_10-16_10-42-09#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -836,15 +420,7 @@
         "channels": "all64",
         "targets": "t9",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#5_left_thumb_60s_10-16_10-43-28#mat",
-        "channels": "all64",
-        "targets": "t9",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -852,15 +428,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#6_right_thumb_60s_10-16_10-50-25#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -868,15 +436,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#7_right_index_60s_10-16_10-49-08#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -884,15 +444,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#8_right_middle_60s_10-16_10-47-50#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -900,15 +452,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "161018_Polenova_Ovchinnikova#9_right_ring_60s_10-16_10-46-33#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -916,15 +460,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#10_right_little_60s_03-19_17-21-53#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -932,15 +468,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#1_left_little_60s_03-19_17-06-59#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -948,15 +476,7 @@
         "channels": "all64",
         "targets": "t6",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#2_left_ring_60s_03-19_17-08-38#mat",
-        "channels": "all64",
-        "targets": "t6",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -964,15 +484,7 @@
         "channels": "all64",
         "targets": "t7",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#3_left_middle_60s_03-19_17-09-58#mat",
-        "channels": "all64",
-        "targets": "t7",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -980,15 +492,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#4_left_index_60s_03-19_17-11-17#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -996,15 +500,7 @@
         "channels": "all64",
         "targets": "t9",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#5_left_thumb_60s_03-19_17-12-38#mat",
-        "channels": "all64",
-        "targets": "t9",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1012,15 +508,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#6_right_thumb_60s_03-19_17-15-28#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1028,15 +516,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#7_right_index_60s_03-19_17-16-57#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1044,15 +524,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#8_right_middle_60s_03-19_17-19-11#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1060,15 +532,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "190319_MGMSU_Saifulin#9_right_ring_60s_03-19_17-20-33#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1076,15 +540,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#10_right_little_60s_11-28_15-32-42#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1092,15 +548,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#1_left_little_60s_11-28_15-05-24#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1108,15 +556,7 @@
         "channels": "all64",
         "targets": "t6",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#2_left_ring_60s_11-28_15-08-00#mat",
-        "channels": "all64",
-        "targets": "t6",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1124,15 +564,7 @@
         "channels": "all64",
         "targets": "t7",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#3_left_middle_60s_11-28_15-10-54#mat",
-        "channels": "all64",
-        "targets": "t7",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1140,15 +572,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#4_left_index_60s_11-28_15-13-34#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1156,15 +580,7 @@
         "channels": "all64",
         "targets": "t9",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#5_left_thumb_60s_11-28_15-16-13#mat",
-        "channels": "all64",
-        "targets": "t9",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1172,15 +588,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#6_right_thumb_60s_11-28_15-20-33#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1188,15 +596,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#7_right_index_60s_11-28_15-23-11#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1204,15 +604,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#8_right_middle_60s_11-28_15-25-44#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1220,15 +612,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#1st_trial#9_right_ring_60s_11-28_15-30-11#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1236,15 +620,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#10_right_little_60s_11-28_15-33-53#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1252,15 +628,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#1_left_little_60s_11-28_15-06-42#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1268,15 +636,7 @@
         "channels": "all64",
         "targets": "t6",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#2_left_ring_60s_11-28_15-09-29#mat",
-        "channels": "all64",
-        "targets": "t6",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1284,15 +644,7 @@
         "channels": "all64",
         "targets": "t7",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#3_left_middle_60s_11-28_15-12-06#mat",
-        "channels": "all64",
-        "targets": "t7",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1300,15 +652,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#4_left_index_60s_11-28_15-14-50#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1316,15 +660,7 @@
         "channels": "all64",
         "targets": "t9",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#5_left_thumb_60s_11-28_15-17-23#mat",
-        "channels": "all64",
-        "targets": "t9",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1332,15 +668,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#6_right_thumb_60s_11-28_15-21-47#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1348,15 +676,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#7_right_index_60s_11-28_15-24-23#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1364,15 +684,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#8_right_middle_60s_11-28_15-28-35#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1380,15 +692,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "281118_MGMSU_Mezhidova#2nd_trial#9_right_ring_60s_11-28_15-31-25#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1396,15 +700,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#10_right_little_60s_12-10_16-43-53#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1412,15 +708,7 @@
         "channels": "all64",
         "targets": "t4",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#10_right_little_60s_12-10_16-45-05#mat",
-        "channels": "all64",
-        "targets": "t4",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1428,15 +716,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#1_left_little_60s_12-10_16-15-11#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1444,15 +724,7 @@
         "channels": "all64",
         "targets": "t5",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#1_left_little_60s_12-10_16-16-22#mat",
-        "channels": "all64",
-        "targets": "t5",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1460,15 +732,7 @@
         "channels": "all64",
         "targets": "t6",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#2_left_ring_60s_12-10_16-18-16#mat",
-        "channels": "all64",
-        "targets": "t6",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1476,15 +740,7 @@
         "channels": "all64",
         "targets": "t6",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#2_left_ring_60s_12-10_16-19-29#mat",
-        "channels": "all64",
-        "targets": "t6",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1492,15 +748,7 @@
         "channels": "all64",
         "targets": "t7",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#3_left_middle_60s_12-10_16-21-02#mat",
-        "channels": "all64",
-        "targets": "t7",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1508,15 +756,7 @@
         "channels": "all64",
         "targets": "t7",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#3_left_middle_60s_12-10_16-22-15#mat",
-        "channels": "all64",
-        "targets": "t7",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1524,15 +764,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#4_left_index_60s_12-10_16-23-37#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1540,15 +772,7 @@
         "channels": "all64",
         "targets": "t8",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#4_left_index_60s_12-10_16-24-57#mat",
-        "channels": "all64",
-        "targets": "t8",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1556,15 +780,7 @@
         "channels": "all64",
         "targets": "t9",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#5_left_thumb_60s_12-10_16-27-47#mat",
-        "channels": "all64",
-        "targets": "t9",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1572,15 +788,7 @@
         "channels": "all64",
         "targets": "t9",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#5_left_thumb_60s_12-10_16-28-58#mat",
-        "channels": "all64",
-        "targets": "t9",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1588,15 +796,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#6_right_thumb_60s_12-10_16-32-54#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1604,15 +804,7 @@
         "channels": "all64",
         "targets": "t0",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#6_right_thumb_60s_12-10_16-34-06#mat",
-        "channels": "all64",
-        "targets": "t0",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1620,15 +812,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#7_right_index_60s_12-10_16-35-54#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1636,15 +820,7 @@
         "channels": "all64",
         "targets": "t1",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#7_right_index_60s_12-10_16-37-05#mat",
-        "channels": "all64",
-        "targets": "t1",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1652,15 +828,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#8_right_middle_60s_12-10_16-38-28#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1668,15 +836,7 @@
         "channels": "all64",
         "targets": "t2",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#8_right_middle_60s_12-10_16-39-39#mat",
-        "channels": "all64",
-        "targets": "t2",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1684,15 +844,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#9_right_ring_60s_12-10_16-40-59#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     },
     {
@@ -1700,15 +852,7 @@
         "channels": "all64",
         "targets": "t3",
         "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_100_100",
-        "splitter": "train50_test50_and_test50_train50"
-    },
-    {
-        "data": "101218_Polenova_Sukhov#9_right_ring_60s_12-10_16-42-35#mat",
-        "channels": "all64",
-        "targets": "t3",
-        "preprocess": "5hz_hp_filter#x2_downsampling#XY_scale",
-        "model": "simple_pytorch_net_200_0",
+        "model": "linear_regression",
         "splitter": "train50_test50_and_test50_train50"
     }
 ]

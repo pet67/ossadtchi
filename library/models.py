@@ -194,6 +194,7 @@ class NewSimplePytorchNet(BenchModel):
         self.output_filtration = output_filtration
         self.frequency = frequency
         self.best_channels_only = best_channels_only
+        self.best_state_dict = None
 
     def fit(self, X_train, Y_train, X_test, Y_test):
         if self.best_channels_only:
@@ -208,8 +209,7 @@ class NewSimplePytorchNet(BenchModel):
         Y_test_sliced = self.slice_target(Y_test)
         pbar = tqdm(total=self.iters)
         loss_history = []
-        max_test_corr = 0
-        best_iter = 0
+        max_test_corr = -1
         for batch_number, (x_batch, y_batch) in enumerate(train_data_generator):
             self.model.train()
             assert x_batch.shape[0]==y_batch.shape[0]
@@ -224,7 +224,7 @@ class NewSimplePytorchNet(BenchModel):
             pbar.update(1)
             eval_lag = min(100,len(loss_history))
             pbar.set_postfix(loss = np.mean(loss_history[-eval_lag:]))
-            if len(loss_history) % 500 == 0:
+            if len(loss_history) % 250 == 0:
                 Y_predicted = self.predict(X_test)
                 test_corr_list = []
                 for i in range(Y_predicted.shape[1]):
@@ -234,13 +234,13 @@ class NewSimplePytorchNet(BenchModel):
                 print("Correlation test:", mean_corr)
                 if mean_corr > max_test_corr:
                     max_test_corr = mean_corr
-                    best_iter = len(loss_history)
-                if max_test_corr > 0.3 and mean_corr / max_test_corr < 0.9 or (len(loss_history) - best_iter) > 5000:
-                    print("Overfitting finish train")
-                    break
+                    self.best_state_dict = copy.deepcopy(self.model.state_dict())
             if batch_number >= self.iters:
                 break
         pbar.close()
+        self.model = library.models_lib.torch_nets.simple_net(X_train.shape[1], Y_train.shape[1], self.lag_backward, self.lag_forward).cuda()
+        assert self.best_state_dict is not None
+        self.model.load_state_dict(self.best_state_dict)
 
     def predict(self, X):
         if self.best_channels_only:
