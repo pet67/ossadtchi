@@ -147,17 +147,17 @@ def process(job):
 
         input_shape = X_train.shape[1:]
         output_shape = Y_train.shape[1:]
-
+        
         bench_model_class = job["model"]["model_base_class_reference"]
         bench_model = bench_model_class(input_shape=input_shape, output_shape=output_shape, frequency=frequency, **job["model"]["kwargs"])
         bench_model.fit(copy.deepcopy(X_train), copy.deepcopy(Y_train), copy.deepcopy(X_val), copy.deepcopy(Y_val))
-
+        
         Y_train_predicted = bench_model.predict(copy.deepcopy(X_train))
         Y_val_predicted = bench_model.predict(copy.deepcopy(X_val))
         Y_test_predicted = bench_model.predict(copy.deepcopy(X_test))
 
         Y_train_sliced = bench_model.slice_target(copy.deepcopy(Y_train))
-        Y_val_sliced = bench_model.slice_target(copy.deepcopy(Y_val_predicted))
+        Y_val_sliced = bench_model.slice_target(copy.deepcopy(Y_val))
         Y_test_sliced = bench_model.slice_target(copy.deepcopy(Y_test))
 
         assert len(Y_train_predicted.shape) == len(Y_train_sliced.shape) == len(Y_val_predicted.shape) == len(Y_val_sliced.shape) == len(Y_test_predicted.shape) == len(Y_test_sliced.shape) == 2, \
