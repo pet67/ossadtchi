@@ -46,12 +46,13 @@ def interpolatePN(y, empty_fill_val=0):
 def h5_data_loader_impl(path, channels_range, fingers_range, left_cut=0):
     with h5py.File(path, 'r+') as input_file:
         raw_data = np.copy(np.array(input_file['protocol1']['raw_data']))
-        channels_names = np.copy(np.array(input_file['channels']))
+        channels_names = np.copy(np.array(input_file['channels'])).tolist()
+        channels_names = np.array([channels_name.decode("utf-8") for channels_name in channels_names])
 
-    assert np.all(channels_names[fingers_range].to_list() == FINGERS_RANGE_NAMES), \
-        f"Expected fingers {channels_names[fingers_range].to_list()}, found {FINGERS_RANGE_NAMES}"
-    assert all(["pos" not in channels_name for channels_name in channels_names.to_list()]), \
-        "Probably you use position as input channel"
+    assert np.all(channels_names[fingers_range].tolist() == FINGERS_RANGE_NAMES), \
+        f"Expected fingers {channels_names[fingers_range].tolist()}, found {FINGERS_RANGE_NAMES}"
+    assert all(["pos" not in channel_name for channel_name in channels_names[channels_range].tolist()]), \
+        f"Probably you use position as input channel {[channel_name for channel_name in channels_names[channels_range].tolist() if 'pos' in channel_name]}"
     fingers = np.copy(raw_data[left_cut:, fingers_range])
     channels = np.copy(raw_data[left_cut:, channels_range])
     fingers = interpolatePN(fingers)

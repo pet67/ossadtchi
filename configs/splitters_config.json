@@ -1,10 +1,6 @@
 [
     {
-        "name": "train50_test50",
-        "method": "train50_test50"
-    },
-    {
-        "name": "train50_test50_and_test50_train50",
-        "method": "train50_test50_and_test50_train50"
+        "name": "new_4x_cross_testing",
+        "method": "new_4x_cross_testing"
     }
 ]

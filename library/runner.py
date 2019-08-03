@@ -135,33 +135,37 @@ def process(job):
     output["job"]["start_time"] = int(start_time)
 
     splitter = job["splitter"]["splitter_method_reference"]
-    for X_train, Y_train, X_test, Y_test in splitter(X, Y):
+    for X_train, Y_train, X_val, Y_val, X_test, Y_test in splitter(X, Y):
         start_subjob_time = time.time()
         assert len(Y_train.shape) == len(Y_test.shape) == 2, \
             f"Expected get 2 demensional Y got: Y_train {Y_train.shape}, Y_test {Y_test.shape}"
         assert(Y_train.shape[1:] == Y_test.shape[1:])
-        assert len(X_train) == len(X_test)
         assert len(X_train) >= 2
+        assert len(X_val) >= 2
         assert len(X_test) >= 2
-        assert(X_train.shape[1:] == X_test.shape[1:])
+        assert(X_train.shape[1:] == X_val.shape[1:] == X_test.shape[1:])
 
         input_shape = X_train.shape[1:]
         output_shape = Y_train.shape[1:]
 
         bench_model_class = job["model"]["model_base_class_reference"]
         bench_model = bench_model_class(input_shape=input_shape, output_shape=output_shape, frequency=frequency, **job["model"]["kwargs"])
-        bench_model.fit(copy.deepcopy(X_train), copy.deepcopy(Y_train), copy.deepcopy(X_test), copy.deepcopy(Y_test))
+        bench_model.fit(copy.deepcopy(X_train), copy.deepcopy(Y_train), copy.deepcopy(X_val), copy.deepcopy(Y_val))
 
         Y_train_predicted = bench_model.predict(copy.deepcopy(X_train))
+        Y_val_predicted = bench_model.predict(copy.deepcopy(X_val))
         Y_test_predicted = bench_model.predict(copy.deepcopy(X_test))
 
         Y_train_sliced = bench_model.slice_target(copy.deepcopy(Y_train))
+        Y_val_sliced = bench_model.slice_target(copy.deepcopy(Y_val_predicted))
         Y_test_sliced = bench_model.slice_target(copy.deepcopy(Y_test))
 
-        assert len(Y_train_predicted.shape) == len(Y_train_sliced.shape) == len(Y_test_predicted.shape) == len(Y_test_sliced.shape) == 2, \
+        assert len(Y_train_predicted.shape) == len(Y_train_sliced.shape) == len(Y_val_predicted.shape) == len(Y_val_sliced.shape) == len(Y_test_predicted.shape) == len(Y_test_sliced.shape) == 2, \
             f"Expected get 2 demensional Y got: Y_train_predicted {Y_train_predicted.shape}, Y_train_sliced {Y_train_sliced.shape}, Y_test_predicted {Y_test_predicted.shape}, Y_test_sliced {Y_test_sliced.shape}"
         assert Y_train_predicted.shape == Y_train_sliced.shape, \
             f'Y_train_predicted.shape {Y_train_predicted.shape} != Y_train_sliced.shape {Y_train_sliced.shape}'
+        assert Y_val_predicted.shape == Y_val_sliced.shape, \
+            f'Y_val_predicted.shape {Y_val_predicted.shape} != Y_val_sliced.shape {Y_val_sliced.shape}'
         assert Y_test_predicted.shape == Y_test_sliced.shape, \
             f'Y_test_predicted.shape {Y_test_predicted.shape} != Y_test_sliced.shape {Y_test_sliced.shape}'
 
@@ -172,6 +176,7 @@ def process(job):
             # "Y_test_predicted": Y_test_predicted.tolist(),
             # "Y_test_sliced": Y_test_sliced.tolist(),
             "train_correlation": get_correlations_list(Y_train_sliced, Y_train_predicted),
+            "val_correlation": get_correlations_list(Y_val_sliced, Y_val_predicted),
             "test_correlation": get_correlations_list(Y_test_sliced, Y_test_predicted),
             "execution_time": float(end_subjob_time - start_subjob_time)
         }
