@@ -7,6 +7,8 @@ import time
 
 import numpy as np
 
+import threadpoolctl
+
 from . import models
 from . import preprocessing
 from . import real_data_loaders
@@ -212,5 +214,6 @@ def runner(output_folder, jobs_filepath, configs_folder):
         job_to_process = jobs[0]
         output_filename = job_to_process["output_filename"]
         sys.stderr.write("Process start: {}\n".format(output_filename))
-        process(job_to_process)
+        with threadpoolctl.threadpool_limits(limits=1):
+            process(job_to_process)
         sys.stderr.write("Process finished: {}\n".format(output_filename))

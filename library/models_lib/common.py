@@ -7,6 +7,29 @@ import sklearn
 import sklearn.linear_model
 
 
+FILEINDEX2TARGET = {
+    1: 5,
+    2: 6,
+    3: 7,
+    4: 8,
+    5: 9,
+    6: 0,
+    7: 1,
+    8: 2,
+    9: 3,
+    10: 4
+}
+
+
+def filename2target(filname):
+    file_index = int(filname.split("_")[0])
+    return FILEINDEX2TARGET[file_index]
+    
+
+def path2target(path):
+    return filename2target(path.split("/")[-1])
+
+
 def data_generator(X, Y, b_size, lag_backward, lag_forward):
     total_lag = lag_backward + lag_forward
     all_b = (X.shape[0] - total_lag) / b_size
@@ -74,15 +97,15 @@ def get_narrowband_features_flat(X, frequency):
     return X_3D.reshape(X_3D.shape[0], -1)
 
 
-def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration=True, model_class=sklearn.linear_model.LinearRegression, max_number_of_combinations=5):
-    print("Get best")
+def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration=True, model_class=sklearn.linear_model.LinearRegression):
+    print("Get best channels")
     results = {}
+    X_train_new = get_narrowband_features_flat(X_train, frequency)
+    X_test_new = get_narrowband_features_flat(X_test, frequency)
     for channel in range(X_train.shape[1]):
         model = model_class()
-        X_train_new = get_narrowband_features_flat(X_train[:, [channel]], frequency)
-        X_test_new = get_narrowband_features_flat(X_test[:, [channel]], frequency)
-        model.fit(X_train_new, Y_train)
-        Y_predicted = model.predict(X_test_new)
+        model.fit(X_train_new[:, [channel]], Y_train)
+        Y_predicted = model.predict(X_test_new[:, [channel]])
         Y_predicted_filtered = final_lowpass_filtering(Y_predicted, frequency)
         test_corr = np.corrcoef(Y_predicted_filtered.reshape(1, -1), Y_test.reshape(1, -1))[0, 1]
         print(f"Channel {channel}: {round(test_corr, 2)} correlation")
@@ -92,12 +115,10 @@ def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, o
 
     max_corr = -1
     best_channels_combination = None
-    for channels_number in range(1, max_number_of_combinations + 1):
+    for channels_number in range(1, X_train.shape[1] + 1):
         model = model_class()
-        X_train_new = get_narrowband_features_flat(X_train[:, best_channels_list[:channels_number]], frequency)
-        model.fit(X_train_new, Y_train)
-        X_test_new = get_narrowband_features_flat(X_test[:, best_channels_list[:channels_number]], frequency)
-        Y_predicted = model.predict(X_test_new)
+        model.fit(X_train_new[:, best_channels_list[:channels_number]], Y_train)
+        Y_predicted = model.predict(X_test_new[:, best_channels_list[:channels_number]])
         if output_filtration:
             Y_predicted_filtered = final_lowpass_filtering(Y_predicted, frequency)
         else:
@@ -107,6 +128,7 @@ def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, o
             best_channels_combination = best_channels_list[:channels_number]
             max_corr = test_corr
         print(f"Channes {best_channels_list[:channels_number]}: {round(test_corr, 2)} correlation")
+    print(f"best_channels_combination {best_channels_combination}")
     return best_channels_combination
 
 

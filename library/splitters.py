@@ -8,27 +8,39 @@ def new_4x_cross_testing(X, Y):
     assert (train_share + val_share + test_share) == 1
 
     samples_in_data = int(X.shape[0])
-    
+
+    train_index = int(samples_in_data * train_share)
+    val_index = int(samples_in_data * (train_share + val_share))
+    direct_train_slice = slice(None, train_index)
+    direct_val_slice = slice(train_index, val_index)
+    direct_test_slice = slice(val_index, None)
+
+    reversed_test_index = int(samples_in_data * test_share)
+    reversed_val_index = int(samples_in_data * (test_share + val_share))
+    reversed_train_slice = slice(reversed_val_index, None)
+    reversed_val_slice = slice(reversed_test_index, reversed_val_index)
+    reversed_test_slice = slice(None, reversed_test_index)
+
     for train_slice, val_slice, test_slice in [
         (
-            slice(None, int(samples_in_data * train_share)),
-            slice(int(samples_in_data * train_share), int(samples_in_data * (train_share + val_share))),
-            slice(int(samples_in_data * (train_share + val_share)), None)
+            direct_train_slice,
+            direct_val_slice,
+            direct_test_slice
         ),
         (
-            slice(None, int(samples_in_data * train_share)),
-            slice(int(samples_in_data * (train_share + val_share)), None),
-            slice(int(samples_in_data * train_share), int(samples_in_data * (train_share + val_share)))
+            direct_train_slice,
+            direct_test_slice,
+            direct_val_slice
         ),
         (
-            slice(int(samples_in_data * (test_share + val_share)), None),
-            slice(int(samples_in_data * test_share), int(samples_in_data * (test_share + val_share))),
-            slice(None, int(samples_in_data * test_share))
+            reversed_train_slice,
+            reversed_val_slice,
+            reversed_test_slice
         ),
         (
-            slice(int(samples_in_data * (test_share + val_share)), None),
-            slice(None, int(samples_in_data * test_share)),
-            slice(int(samples_in_data * test_share), int(samples_in_data * (test_share + val_share)))
+            reversed_train_slice,
+            reversed_test_slice,
+            reversed_val_slice
         ),
     ]:
         X_train = np.copy(X[train_slice, :])
