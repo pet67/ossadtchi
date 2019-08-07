@@ -62,7 +62,7 @@
         }
     },
     {
-        "name": "linear_regression_15limit",
+        "name": "linear_regression_5limit",
         "model_base_class": "LinearRegressionModel",
         "kwargs": {}
     },
