@@ -42,7 +42,7 @@
         }
     },
     {
-        "name": "simple_pytorch_net_200_0",
+        "name": "simple_pytorch_net_200_0_15limit_new",
         "model_base_class": "NewSimplePytorchNet",
         "kwargs": {
             "lag_backward": 200,
@@ -52,9 +52,14 @@
         }
     },
     {
-        "name": "linear_regression",
-        "model_base_class": "LinearRegressionModel",
-        "kwargs": {}
+        "name": "simple_pytorch_net_200_0_all_channels",
+        "model_base_class": "NewSimplePytorchNet",
+        "kwargs": {
+            "lag_backward": 200,
+            "lag_forward": 0,
+            "output_filtration": true,
+            "best_channels_only": false
+        }
     },
     {
         "name": "ridge_regression",
