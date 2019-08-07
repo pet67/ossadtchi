@@ -100,7 +100,7 @@ def get_narrowband_features_flat(X, frequency):
     return make_flat(X_3D)
 
 
-def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration=True, model_class=sklearn.linear_model.LinearRegression):
+def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration=True, model_class=sklearn.linear_model.LinearRegression, max_number_of_combinations=15):
     print("Get best channels")
     results = {}
     X_train_new = get_narrowband_features(X_train, frequency)
@@ -118,7 +118,7 @@ def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, o
 
     max_corr = -1
     best_channels_combination = None
-    for channels_number in range(1, X_train.shape[1] + 1):
+    for channels_number in range(1, max_number_of_combinations + 1):
         model = model_class()
         model.fit(make_flat(X_train_new[:, best_channels_list[:channels_number], :]), Y_train)
         Y_predicted = model.predict(make_flat(X_test_new[:, best_channels_list[:channels_number], :]))

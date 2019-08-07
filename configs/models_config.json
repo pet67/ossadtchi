@@ -62,6 +62,11 @@
         }
     },
     {
+        "name": "linear_regression_15limit",
+        "model_base_class": "LinearRegressionModel",
+        "kwargs": {}
+    },
+    {
         "name": "ridge_regression",
         "model_base_class": "RidgeRegressionModel",
         "kwargs": {}
