@@ -100,13 +100,13 @@ def get_narrowband_features_flat(X, frequency):
     return make_flat(X_3D)
 
 
-def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration=True, model_class=sklearn.linear_model.LinearRegression, max_number_of_combinations=5):
+def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration, max_number_of_combinations):
     print("Get best channels")
     results = {}
     X_train_new = get_narrowband_features(X_train, frequency)
     X_test_new = get_narrowband_features(X_test, frequency)
     for channel in range(X_train.shape[1]):
-        model = model_class()
+        model = sklearn.linear_model.LinearRegression()
         model.fit(make_flat(X_train_new[:, [channel], :]), Y_train)
         Y_predicted = model.predict(make_flat(X_test_new[:, [channel], :]))
         Y_predicted_filtered = final_lowpass_filtering(Y_predicted, frequency)
@@ -119,7 +119,7 @@ def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, o
     max_corr = -1
     best_channels_combination = None
     for channels_number in range(1, max_number_of_combinations + 1):
-        model = model_class()
+        model = sklearn.linear_model.LinearRegression()
         model.fit(make_flat(X_train_new[:, best_channels_list[:channels_number], :]), Y_train)
         Y_predicted = model.predict(make_flat(X_test_new[:, best_channels_list[:channels_number], :]))
         if output_filtration:
@@ -135,12 +135,12 @@ def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, o
     return best_channels_combination
 
 
-def get_best_alpha(X_train, Y_train, X_test, Y_test, frequency, model_class, output_filtration=True):
+def get_best_alpha(X_train, Y_train, X_test, Y_test, frequency, model_class, output_filtration):
     max_corr = -1
     best_alpha = None
-    X_train_new = get_narrowband_features(X_train, frequency)
-    X_test_new = get_narrowband_features(X_test, frequency)
-    for alpha in [20, 10, 7, 5, 4, 2, 1, 0.1, 0.01, 0.001, 0.0001]:
+    X_train_new = get_narrowband_features_flat(X_train, frequency)
+    X_test_new = get_narrowband_features_flat(X_test, frequency)
+    for alpha in [20, 10, 7, 5, 4, 2, 1, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001, 0.0001]:
         model = model_class(alpha=alpha, fit_intercept=True, normalize=True)
         model.fit(X_train_new, Y_train)
         Y_predicted = model.predict(X_test_new)
@@ -153,6 +153,7 @@ def get_best_alpha(X_train, Y_train, X_test, Y_test, frequency, model_class, out
             best_alpha = alpha
             max_corr = test_corr
         print(f"Alpha {alpha}: {round(test_corr, 2)} correlation")
+    print(f"best_alpha: {best_alpha}")
     return best_alpha
 
 

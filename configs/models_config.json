@@ -8,41 +8,7 @@
         }
     },
     {
-        "name": "baseline_model_1700_1700",
-        "model_base_class": "BaselineNet",
-        "kwargs": {
-            "lag_backward": 1700,
-            "lag_forward": 1700
-        }
-    },
-    {
-        "name": "baseline_net_400_0",
-        "model_base_class": "BaselineNet",
-        "kwargs": {
-            "lag_backward": 400,
-            "lag_forward": 0
-        }
-    },
-    {
-        "name": "baseline_net_400_400",
-        "model_base_class": "BaselineNet",
-        "kwargs": {
-            "lag_backward": 400,
-            "lag_forward": 400
-        }
-    },
-    {
-        "name": "simple_pytorch_net_100_100",
-        "model_base_class": "NewSimplePytorchNet",
-        "kwargs": {
-            "lag_backward": 100,
-            "lag_forward": 100,
-            "output_filtration": true,
-            "best_channels_only": true
-        }
-    },
-    {
-        "name": "simple_pytorch_net_200_0_15limit_new",
+        "name": "simple_pytorch_net_200_0_best_channels_filtered_pred",
         "model_base_class": "NewSimplePytorchNet",
         "kwargs": {
             "lag_backward": 200,
@@ -52,7 +18,7 @@
         }
     },
     {
-        "name": "simple_pytorch_net_200_0_all_channels",
+        "name": "simple_pytorch_net_200_0_all_channels_filtfilt",
         "model_base_class": "NewSimplePytorchNet",
         "kwargs": {
             "lag_backward": 200,
@@ -62,14 +28,29 @@
         }
     },
     {
-        "name": "linear_regression_5limit",
+        "name": "simple_pytorch_net_200_0_all_channels",
+        "model_base_class": "NewSimplePytorchNet",
+        "kwargs": {
+            "lag_backward": 200,
+            "lag_forward": 0,
+            "output_filtration": false,
+            "best_channels_only": false
+        }
+    },
+    {
+        "name": "linear_regression_5_best",
         "model_base_class": "LinearRegressionModel",
-        "kwargs": {}
+        "kwargs": {
+            "max_number_of_combinations": 5,
+            "output_filtration": true
+        }
     },
     {
         "name": "ridge_regression",
         "model_base_class": "RidgeRegressionModel",
-        "kwargs": {}
+        "kwargs": {
+            "output_filtration": true
+        }
     },
     {
         "name": "lasso_regression",

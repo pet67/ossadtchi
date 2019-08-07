@@ -120,12 +120,13 @@ class BaselineNet(BenchModel):
 
 
 class LinearRegressionModel(BenchModel):
-    def __init__(self, input_shape, output_shape, frequency, output_filtration=True):
+    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration=True):
         self.frequency = frequency
         self.output_filtration = output_filtration
+        self.max_number_of_combinations = max_number_of_combinations
 
     def fit(self, X_train, Y_train, X_test, Y_test):
-        self.best_channels_combination = library.models_lib.common.get_best_channels_combination(X_train, Y_train, X_test, Y_test, self.frequency, self.output_filtration)
+        self.best_channels_combination = library.models_lib.common.get_best_channels_combination(X_train, Y_train, X_test, Y_test, self.frequency, self.output_filtration, self.max_number_of_combinations)
         X_train_new = library.models_lib.common.get_narrowband_features_flat(X_train[:, self.best_channels_combination], self.frequency)
         self.model = sklearn.linear_model.LinearRegression()
         self.model.fit(X_train_new, Y_train)
@@ -143,19 +144,20 @@ class LinearRegressionModel(BenchModel):
 class LinearRegressionWithRegularization(BenchModel):
     MODEL = None
 
-    def __init__(self, input_shape, output_shape, frequency, output_filtration=True):
+    def __init__(self, input_shape, output_shape, frequency, output_filtration):
         assert self.MODEL is not None
         self.frequency = frequency
         self.output_filtration = output_filtration
 
+
     def fit(self, X_train, Y_train, X_test, Y_test):
-        best_alpha = library.models_lib.common.get_best_alpha(X_train, Y_train, X_test, Y_test, self.frequency, self.MODEL)
+        best_alpha = library.models_lib.common.get_best_alpha(X_train, Y_train, X_test, Y_test, self.frequency, self.MODEL, self.output_filtration)
         self.model = self.MODEL(alpha=best_alpha, fit_intercept=True, normalize=True)
-        X_train_new = library.models_lib.common.get_narrowband_features(X_train, self.frequency)
+        X_train_new = library.models_lib.common.get_narrowband_features_flat(X_train, self.frequency)
         self.model.fit(X_train_new, Y_train)
 
     def predict(self, X):
-        X_new = library.models_lib.common.get_narrowband_features(X, self.frequency)
+        X_new = library.models_lib.common.get_narrowband_features_flat(X, self.frequency)
         Y_predicted = self.model.predict(X_new)
         if len(Y_predicted.shape) == 1:
             Y_predicted = Y_predicted.reshape((-1, 1))  # Unexpectedly lasso returns (*,) dimension instead (*, 1)
