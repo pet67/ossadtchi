@@ -58,37 +58,77 @@ def data_generator(X, Y, b_size, lag_backward, lag_forward):
             yield batch_x
 
 
-def final_lowpass_filtering(Y_predicted, frequency):
+def final_lowpass_filtering(Y_predicted, frequency, mode):
+    assert mode in ["non_causal", "causal"]
     b_lowpass_2Hz, a_lowpass_2Hz = scipy.signal.butter(4, Wn=2 / (frequency / 2), btype='low')
+    b_lowpass_2Hz_causal = scipy.signal.firwin(401, cutoff=2 / (frequency / 2))
     Y_predicted_filtered = np.copy(Y_predicted)
     for i in range(Y_predicted.shape[1]):
-        Y_predicted_filtered[:, i] = scipy.signal.filtfilt(b_lowpass_2Hz, a_lowpass_2Hz, Y_predicted[:, i])
+        if mode == "non_causal":
+            Y_predicted_filtered[:, i] = scipy.signal.filtfilt(b_lowpass_2Hz, a_lowpass_2Hz, Y_predicted[:, i])
+        elif mode == "causal":
+            Y_predicted_filtered[:, i] = scipy.signal.lfilter(b_lowpass_2Hz, [1], Y_predicted[:, i])
+        else:
+            raise ValueError
     assert Y_predicted.shape == Y_predicted_filtered.shape
     return Y_predicted_filtered
 
 
-def get_narrowband_features(X, frequency):
+NumFIRTaps = 257
+NumFIRTaps_FOR_CAUSAL_HIGH_PASS = 21
+F0 = [0.5, 1, 2, 3, 4] + list(range(5, 150, 5))
+NUMBER_OF_FILTERS_PER_CHANNEL = len(F0)
+FETURES_SHIFT = int(NumFIRTaps / 2)
+HIGHPASS_SHIFT = int(NumFIRTaps_FOR_CAUSAL_HIGH_PASS / 2)
+CUTOFF_FREQUENCY_FOR_ABS_VALUES = 0.5
+
+def get_narrowband_features(X, frequency, mode):
+    assert mode in ["non_causal", "semi_causal", "causal"]
     assert len(X.shape) == 2
     assert X.shape[0] > X.shape[1]
-    NumFIRTaps = 257
-    cutoff_frequency_for_abs_values = 0.5
-    f0 = [0.5, 1, 2, 3, 4] + list(range(5, 150, 5))
-    number_of_filters = len(f0)
-    b_hp_05, a_hp_05 = scipy.signal.butter(4, cutoff_frequency_for_abs_values / (frequency / 2), btype='high')
-    b = np.zeros((number_of_filters, NumFIRTaps))
-    for i, f in enumerate(f0):
-        b[i, :] = scipy.signal.firwin(NumFIRTaps, [0.9 * f / (frequency / 2), 1.1 * f / (frequency / 2)], pass_zero=False)
-    X_new = []
-    for channel in range(X.shape[1]):
-        X_new_single = np.zeros((X.shape[0], len(f0)))
-        for i in range(number_of_filters):
-            X_new_single[:, i] = scipy.signal.filtfilt(b[i, :], [1], X[:, channel])
-        X_new_single = np.absolute(X_new_single)
-        for i in range(X_new_single.shape[1]):
-            X_new_single[:, i] = scipy.signal.filtfilt(b_hp_05, a_hp_05, X_new_single[:, i])
-        X_new.append(X_new_single)
 
-    X_output = np.transpose(np.array(X_new), [1, 0, 2])
+    if mode == "non_causal" or mode == "semi_causal":
+        b_hp_05, a_hp_05 = scipy.signal.butter(4, CUTOFF_FREQUENCY_FOR_ABS_VALUES / (frequency / 2), btype='high')
+    elif mode == "causal":
+        b_hp_05_lfilter = scipy.signal.firwin(NumFIRTaps_FOR_CAUSAL_HIGH_PASS, CUTOFF_FREQUENCY_FOR_ABS_VALUES / (frequency / 2), pass_zero=False)
+    else:
+        raise ValueErorr
+
+    b = np.zeros((NUMBER_OF_FILTERS_PER_CHANNEL, NumFIRTaps))
+    for i, f in enumerate(F0):
+        b[i, :] = scipy.signal.firwin(NumFIRTaps, [0.9 * f / (frequency / 2), 1.1 * f / (frequency / 2)], pass_zero=False)
+
+    if mode == "non_causal":
+        output_signals_size = X.shape[0]
+    elif mode == "semi_causal":
+        output_signals_size = X.shape[0] - FETURES_SHIFT
+    elif mode == "causal":
+        output_signals_size = X.shape[0] - FETURES_SHIFT - HIGHPASS_SHIFT
+
+    else:
+        raise ValueErorr
+
+    X_output = np.zeros((output_signals_size, X.shape[1], NUMBER_OF_FILTERS_PER_CHANNEL))
+    for channel in range(X.shape[1]):
+        for i in range(NUMBER_OF_FILTERS_PER_CHANNEL):
+            new_feature_signal = None
+            x_current = X[:, channel]
+            b_current = b[i, :]
+            if mode == "non_causal":
+                new_feature_signal = scipy.signal.filtfilt(b_current, [1], x_current)
+                new_feature_signal = np.absolute(new_feature_signal)
+                new_feature_signal = scipy.signal.filtfilt(b_hp_05, a_hp_05, new_feature_signal)
+            elif mode == "semi_causal":
+                new_feature_signal = scipy.signal.lfilter(b_current, [1], x_current)[FETURES_SHIFT:]
+                new_feature_signal = np.absolute(new_feature_signal)
+                new_feature_signal = scipy.signal.filtfilt(b_hp_05, a_hp_05, new_feature_signal)
+            elif mode == "causal":
+                new_feature_signal = scipy.signal.lfilter(b_current, [1], x_current)[FETURES_SHIFT:]
+                new_feature_signal = np.absolute(new_feature_signal)
+                new_feature_signal = scipy.signal.lfilter(b_hp_05_lfilter, [1], new_feature_signal)[HIGHPASS_SHIFT:]
+            else:
+                raise ValueError
+            X_output[:, channel, i] = new_feature_signal
     return X_output
 
 
