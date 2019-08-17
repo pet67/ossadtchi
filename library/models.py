@@ -120,25 +120,51 @@ class BaselineNet(BenchModel):
 
 
 class LinearRegressionModel(BenchModel):
-    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration=True):
+    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration_mode, lag_backward, lag_forward, lag_decimate, mode):
+        assert mode in ["non_causal", "semi_causal", "causal"]
         self.frequency = frequency
         self.output_filtration = output_filtration
         self.max_number_of_combinations = max_number_of_combinations
+        self.lag_backward = lag_backward
+        self.lag_forward = lag_forward
+        self.lag_decimate = lag_decimate
+        self.mode = mode
+        self.output_filtration_mode = output_filtration_mode
+        self.use_output_filtration = output_filtration
 
-    def fit(self, X_train, Y_train, X_test, Y_test):
-        self.best_channels_combination = library.models_lib.common.get_best_channels_combination(X_train, Y_train, X_test, Y_test, self.frequency, self.output_filtration, self.max_number_of_combinations)
-        X_train_new = library.models_lib.common.get_narrowband_features_flat(X_train[:, self.best_channels_combination], self.frequency)
+    def get_features(X):
+        X_new = library.models_lib.common.get_narrowband_features_flat(X[:, self.best_channels_combination], self.frequency, self.mode)
+        if self.lag_backward > 0 or self.lag_forward > 0:
+            X_new = library.models_lib.common.make_lag(X_new, self.lag_backward, self.lag_forward, self.lag_decimate)
+        return X_new
+    
+    def check_use_output_filtration(self, X_val, Y_val):
+        Y_predicted_val = self.model.predict(self.get_features(X_val))
+        Y_predicted_filtered_val = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency, self.output_filtration_mode)
+        right_shift_without_final_filter = self.lag_foreward + library.models_lib.common.FETURES_SHIFT * int(self.mode != "non_causal") + HIGHPASS_SHIFT * int(self.mode == "causal")
+        right_shift = right_shift_without_final_filter + FINAL_FILTER_SHIFT * int(self.output_filtration_mode == "causal")
+
+        corr_val = np.corrcoef(Y_val[self.lag_backward:right_shift_without_final_filter], Y_predicted_val)[0, 1]
+        corr_val_filtered = np.corrcoef(Y_val[self.lag_backward:right_shift], Y_predicted_filtered_val)[0, 1]
+        self.use_output_filtration = corr_val_filtered > corr_val
+
+    def fit(self, X_train, Y_train, X_val, Y_val):
+        self.best_channels_combination = library.models_lib.common.get_best_channels_combination(X_train, Y_train, X_val, Y_val, self.frequency, self.output_filtration, self.max_number_of_combinations, self.mode)
+        X_train_new = self.get_features(X_train)
         self.model = sklearn.linear_model.LinearRegression()
         self.model.fit(X_train_new, Y_train)
+        slef.check_use_output_filtration(X_val, Y_val)
 
     def predict(self, X):
-        X_new = library.models_lib.common.get_narrowband_features_flat(X[:, self.best_channels_combination], self.frequency)
-        Y_predicted = self.model.predict(X_new)
-        if self.output_filtration:
-            Y_predicted_filtered = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency)
+        Y_predicted = self.model.predict(self.get_features(X))
+        if self.output_filtration_mode != "none":
+            Y_output = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency, self.output_filtration_mode)
         else:
-            Y_predicted_filtered = Y_predicted
-        return Y_predicted_filtered
+            Y_output = Y_predicted
+        return Y_output
+
+    def slice_target(self, Y):
+        return Y[left_shift:-right_shift if right_shift > 0 else None]
 
 
 class LinearRegressionWithRegularization(BenchModel):
@@ -182,7 +208,7 @@ class NewSimplePytorchNet(BenchModel):
         assert lag_backward + lag_forward == 200
         assert frequency == 250 or frequency == 500 or frequency == 1000
         self.iters = 20000
-        self.batch_size = 200
+        self.batch_size = 500
         self.learning_rate = 0.0003
         self.lag_backward = lag_backward
         self.lag_forward = lag_forward

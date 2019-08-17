@@ -8,6 +8,16 @@
         }
     },
     {
+        "name": "simple_pytorch_net_200_0",
+        "model_base_class": "NewSimplePytorchNet",
+        "kwargs": {
+            "lag_backward": 200,
+            "lag_forward": 0,
+            "output_filtration": false,
+            "best_channels_only": false
+        }
+    },
+    {
         "name": "simple_pytorch_net_200_0_best_channels_filtered_pred",
         "model_base_class": "NewSimplePytorchNet",
         "kwargs": {
@@ -18,48 +28,69 @@
         }
     },
     {
-        "name": "simple_pytorch_net_200_0_all_channels_filtfilt",
-        "model_base_class": "NewSimplePytorchNet",
-        "kwargs": {
-            "lag_backward": 200,
-            "lag_forward": 0,
-            "output_filtration": true,
-            "best_channels_only": false
-        }
-    },
-    {
-        "name": "simple_pytorch_net_200_0_all_channels",
-        "model_base_class": "NewSimplePytorchNet",
-        "kwargs": {
-            "lag_backward": 200,
-            "lag_forward": 0,
-            "output_filtration": false,
-            "best_channels_only": false
-        }
-    },
-    {
-        "name": "linear_regression_5_best",
+        "name": "linear_regression_5best_outfilt_noncasual_nolag",
         "model_base_class": "LinearRegressionModel",
         "kwargs": {
             "max_number_of_combinations": 5,
-            "output_filtration": true
+            "output_filtration": true,
+            "mode": "non_causal",
+            "lag_backward": 0,
+            "lag_forward": 0,
+            "lag_decimate": null
+        }
+    },
+    {
+        "name": "linear_regression_5best_outfilt_semicasual_nolag",
+        "model_base_class": "LinearRegressionModel",
+        "kwargs": {
+            "max_number_of_combinations": 5,
+            "output_filtration": true,
+            "mode": "semi_causal",
+            "lag_backward": 0,
+            "lag_forward": 0,
+            "lag_decimate": null
+        }
+    },
+    {
+        "name": "linear_regression_5best_outfilt_casual_nolag",
+        "model_base_class": "LinearRegressionModel",
+        "kwargs": {
+            "max_number_of_combinations": 5,
+            "output_filtration": true,
+            "mode": "causal",
+            "lag_backward": 0,
+            "lag_forward": 0,
+            "lag_decimate": null
         }
     },
     {
         "name": "ridge_regression",
         "model_base_class": "RidgeRegressionModel",
         "kwargs": {
-            "output_filtration": true
+            "output_filtration": true,
+            "mode": "non_causal",
+            "lag_backward": 0,
+            "lag_forward": 0
         }
     },
     {
         "name": "lasso_regression",
         "model_base_class": "LassoRegressionModel",
-        "kwargs": {}
+        "kwargs": {
+            "output_filtration": true,
+            "mode": "non_causal",
+            "lag_backward": 0,
+            "lag_forward": 0
+        }
     },
     {
         "name": "iterative_2D_regression",
         "model_base_class": "Iterative2DRegressionModel",
-        "kwargs": {}
+        "kwargs": {
+            "output_filtration": true,
+            "mode": "non_causal",
+            "lag_backward": 0,
+            "lag_forward": 0
+        }
     }
 ]

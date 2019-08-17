@@ -1,5 +1,7 @@
 import numpy as np
 
+import sklearn
+import sklearn.preprocessing
 
 def new_4x_cross_testing(X, Y):
     train_share = 0.6
@@ -50,3 +52,13 @@ def new_4x_cross_testing(X, Y):
         X_test = np.copy(X[test_slice, :])
         Y_test = np.copy(Y[test_slice, :])
         yield X_train, Y_train, X_val, Y_val, X_test, Y_test
+
+
+def bciciv_4_splitter(X, Y):
+    TEST_SAMPLES_INDEX = 400000
+    X_train = np.copy(X[:TEST_SAMPLES_INDEX])
+    Y_train = np.copy(Y[:TEST_SAMPLES_INDEX])
+    X_test = np.copy(X[TEST_SAMPLES_INDEX:])
+    Y_test = np.copy(Y[TEST_SAMPLES_INDEX:])
+    yield X_train, Y_train, X_test, Y_test, X_test, Y_test
+    

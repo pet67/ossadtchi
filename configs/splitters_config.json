@@ -2,5 +2,9 @@
     {
         "name": "new_4x_cross_testing",
         "method": "new_4x_cross_testing"
+    },
+    {
+        "name": "bciciv_4_splitter",
+        "method": "bciciv_4_splitter"
     }
 ]

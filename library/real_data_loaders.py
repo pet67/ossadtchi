@@ -3,6 +3,9 @@ import numpy as np
 import scipy
 import scipy.io
 
+import sklearn
+import sklearn.preprocessing
+
 
 # Next two global variables for h5_data_loaders
 FINGERS_RANGE = [15, 41, 65, 89, 113, 135, 155, 185, 209, 233]
@@ -71,3 +74,19 @@ def h5_data_loader_57_channels(path):
     myo_range = range(0, 64 - 7)
     fingers_range = [f + 69 - 7 for f in FINGERS_RANGE]
     return h5_data_loader_impl(path, myo_range, fingers_range, left_cut)
+
+
+def bciciv_4_data_loader(path):
+    subject = path.split("/")[-1]
+    assert subject.startswith("sub")
+    prefix = f"{path}/{subject}"
+    data_tarin = scipy.io.loadmat(f"{prefix}_comp.mat")
+    data_test = scipy.io.loadmat(f"{prefix}_testlabels.mat")
+    
+    X_train = sklearn.preprocessing.scale(data_tarin['train_data'])
+    Y_train = sklearn.preprocessing.scale(data_tarin['train_dg'])
+
+    X_test = sklearn.preprocessing.scale(data_tarin['test_data'])
+    Y_test = sklearn.preprocessing.scale(data_test['test_dg'])
+
+    return np.concatenate([X_train, X_test], axis=0), np.concatenate([Y_train, Y_test], axis=0)
