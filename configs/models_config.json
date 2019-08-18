@@ -92,5 +92,27 @@
             "lag_backward": 0,
             "lag_forward": 0
         }
+    },
+    {
+        "name": "band_specific_ecog_classic",
+        "model_base_class": "BandSpecificEcog",
+        "kwargs": {
+            "max_number_of_channels": 10,
+            "lag_backward": 1066,
+            "lag_forward": 0,
+            "decimate": 41,
+            "fir_taps": 50,
+            "moving_average_window": 41
+        }
+    },
+    {
+        "name": "narrow_band_ecog_classic",
+        "model_base_class": "NarrowBandEcog",
+        "kwargs": {
+            "max_number_of_channels": 10,
+            "output_filtration": true,
+            "fir_taps": 257,
+            "abs_values_high_pass_frequency": 0.5
+        }
     }
 ]

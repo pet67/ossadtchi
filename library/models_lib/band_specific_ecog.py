@@ -6,12 +6,13 @@
 import scipy
 import scipy.io
 import scipy.signal
+import numpy as np
 
 import library.models_lib.common
 
 
 # paper default parameters
-FIR_TAPS = 25 # This parameter not mentioned in paper
+FIR_TAPS = 50 # This parameter not mentioned in paper
 MOVING_AVERAGE_WINDOW = 41
 BACKWARD_NON_OVERLAPPING_PARTS = 26
 
@@ -40,16 +41,16 @@ def get_band_features(X, frequency, fir_taps=FIR_TAPS, moving_avarage_window=MOV
     ]
     X_output_3D = np.zeros((X.shape[0], X.shape[1], len(band_filters)))
     for channel in range(X.shape[1]):
-        for band_filter in range(band_filters):
+        for index, band_filter in enumerate(band_filters):
             new_feature_signal = scipy.signal.lfilter(band_filter, [1], X[:, channel])
             new_feature_signal = np.power(new_feature_signal, 2)
             new_feature_signal = forward_moving_avarage(np.copy(new_feature_signal), moving_avarage_window)
-            X_output_3D[:, channel, i] = new_feature_signal
+            X_output_3D[:, channel, index] = new_feature_signal
     return X_output_3D
 
 
 def get_band_features_with_lag(X, frequency, lag_backward=LAG_FORWARD, lag_forward=LAG_FORWARD, decimate=DECIMATE):
-    return library.models_lib.common.make_lag(get_band_features(X, frequency), lag_backward=lag_backward, lag_forward=lag_forward, decimate=decimate)
+    return library.models_lib.common.make_lag_3D(get_band_features(X, frequency), lag_backward=lag_backward, lag_forward=lag_forward, decimate=decimate)
 
 
 def get_band_features_with_lag_flat(X, frequency, lag_backward=LAG_BACKWARD, lag_forward=LAG_FORWARD, decimate=DECIMATE):

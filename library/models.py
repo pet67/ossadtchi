@@ -24,6 +24,8 @@ import library.models_lib.common
 import library.models_lib.keras_nets
 import library.models_lib.torch_nets
 import library.models_lib.other_models
+import library.models_lib.band_specific_ecog
+import library.models_lib.narrow_band_ecog
 
 
 class BenchModel:
@@ -119,29 +121,26 @@ class BaselineNetModel(BenchModel):
         return Y[self.lag_backward:-self.lag_forward if self.lag_forward > 0 else None]
 
 
-class LinearRegressionModel(BenchModel):
-    FEATURES_CREATOR = None
-    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration):
-        assert self.FEATURES_CREATOR != None
+class NarrowBandEcog(BenchModel):
+    def __init__(self, input_shape, output_shape, frequency, max_number_of_channels, output_filtration, fir_taps, abs_values_high_pass_frequency):
         self.frequency = frequency
         self.output_filtration = output_filtration
         self.max_number_of_channels = max_number_of_channels
-        
+        self.fir_taps = fir_taps
+        self.abs_values_high_pass_frequency = abs_values_high_pass_frequency
 
     def fit(self, X_train, Y_train, X_val, Y_val):
-        X_train_new = self.FEATURES_CREATOR(X_train, self.frequency)
-        X_val_new = self.FEATURES_CREATOR(X_val, self.frequency)
-        
-        Y_train = self.slice_target(Y_train)
-        Y_val = self.slice_target(Y_val)
+        X_train_new_3D = library.models_lib.narrow_band_ecog.get_narrowband_features(X_train, self.frequency, fir_taps=self.fir_taps, abs_values_high_pass_frequency=self.abs_values_high_pass_frequency)
+        X_val_new_3D = library.models_lib.narrow_band_ecog.get_narrowband_features(X_val, self.frequency, fir_taps=self.fir_taps, abs_values_high_pass_frequency=self.abs_values_high_pass_frequency)
 
-        self.best_channels_combination = library.models_lib.common.best_channels_greedy_search(X_train_new, Y_train, X_val_new, Y_val, self.max_number_of_combinations)
+        self.best_channels_combination = library.models_lib.common.best_channels_greedy_search_fast(X_train_new_3D, Y_train, X_val_new_3D, Y_val, self.max_number_of_channels)
 
+        X_train_new = library.models_lib.narrow_band_ecog.get_narrowband_features_flat(X_train[:, self.best_channels_combination], self.frequency, fir_taps=self.fir_taps, abs_values_high_pass_frequency=self.abs_values_high_pass_frequency)
         self.model = sklearn.linear_model.LinearRegression()
-        self.model.fit(X_train_new[:, self.best_channels_combination], Y_train)
+        self.model.fit(X_train_new, Y_train)
 
     def predict(self, X):
-        X_new = self.FEATURES_CREATOR(X[:, self.best_channels_combination], self.frequency)
+        X_new = library.models_lib.narrow_band_ecog.get_narrowband_features_flat(X[:, self.best_channels_combination], self.frequency, fir_taps=self.fir_taps, abs_values_high_pass_frequency=self.abs_values_high_pass_frequency)
         Y_predicted = self.model.predict(X_new)
         if self.output_filtration:
             Y_predicted_filtered = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency)
@@ -149,27 +148,44 @@ class LinearRegressionModel(BenchModel):
             Y_predicted_filtered = Y_predicted
         return Y_predicted_filtered
 
-    def slice_target(self, Y):
-        lag_backward = self.lag_backward if hasattr(self, "lag_backward") else 0
-        lag_forward = self.lag_forward if hasattr(self, "lag_forward") else 0
-        return Y[self.lag_backward:-self.lag_forward if self.lag_forward > 0 else None]
-
-
-class BandSpecificEcog(LinearRegressionModel):
-    FEATURES_CREATOR = library.models_lib.band_specific_ecog.get_band_features_with_lag_flat
-    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration, lag_backward, lag_forward, decimate, fir_taps, moving_average_window):
-        super(BandSpecificEcog, self).__init__()
+class BandSpecificEcog(BenchModel):
+    def __init__(self, input_shape, output_shape, frequency, max_number_of_channels, lag_backward, lag_forward, decimate, fir_taps, moving_average_window):
+        self.frequency = frequency
+        #self.output_filtration = output_filtration
+        self.max_number_of_channels = max_number_of_channels
         self.lag_backward = lag_backward
         self.lag_forward = lag_forward
         self.lag_forward = decimate
         self.fir_taps = fir_taps
         self.moving_average_window = moving_average_window
+        self.decimate = decimate
+
+    def fit(self, X_train, Y_train, X_val, Y_val):
+        X_train_new_3D = library.models_lib.band_specific_ecog.get_band_features_with_lag(X_train, self.frequency, lag_backward=self.lag_backward, lag_forward=self.lag_forward, decimate=self.decimate)
+        X_val_new_3D = library.models_lib.band_specific_ecog.get_band_features_with_lag(X_val, self.frequency, lag_backward=self.lag_backward, lag_forward=self.lag_forward, decimate=self.decimate)
+        
+        Y_train = self.slice_target(Y_train)
+        Y_val = self.slice_target(Y_val)
+
+        self.best_channels_combination = library.models_lib.common.best_channels_greedy_search_fast(X_train_new_3D, Y_train, X_val_new_3D, Y_val, self.max_number_of_channels)
+
+        X_train_new = library.models_lib.band_specific_ecog.get_band_features_with_lag_flat(X_train[:, self.best_channels_combination], self.frequency, lag_backward=self.lag_backward, lag_forward=self.lag_forward, decimate=self.decimate) 
+        self.model = sklearn.linear_model.LinearRegression()
+        self.model.fit(X_train_new, Y_train)
+
+    def predict(self, X):
+        X_new = library.models_lib.band_specific_ecog.get_band_features_with_lag_flat(X[:, self.best_channels_combination], self.frequency, lag_backward=self.lag_backward, lag_forward=self.lag_forward, decimate=self.decimate)
+        Y_predicted = self.model.predict(X_new)
+        return Y_predicted
+
+    def slice_target(self, Y):
+        return Y[self.lag_backward:-self.lag_forward if self.lag_forward > 0 else None]
 
 
-class NarrowBandEcog(LinearRegressionModel):
-    FEATURES_CREATOR = library.models_lib.narrow_band_ecog.get_narrowband_features_flat
-    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration):
-        super(NarrowBandEcog, self).__init__()
+# class NarrowBandEcog(LinearRegressionModel):
+#     FEATURES_CREATOR = library.models_lib.narrow_band_ecog.get_narrowband_features_flat
+#     def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration):
+#         super(NarrowBandEcog, self).__init__()
 
 
 class LinearRegressionWithRegularization(BenchModel):

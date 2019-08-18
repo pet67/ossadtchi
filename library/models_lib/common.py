@@ -16,22 +16,40 @@ def calculate_batches_number(x_size, total_lag, b_size):
 
 
 def make_lag_3D(X_3D, lag_backward, lag_forward, decimate=1):
+    # TODO: probably this code can be rewritten shorter
     assert decimate > 0
     assert lag_backward >=0
     assert lag_forward >=0
-    if lag_backward == 0 and lag_forward == 0:
-        return X_3D
-    X_output_3D = np.zeros(X.shape[0] - lag_backward - lag_forward, X.shape[1], X.shape[2] * (1 + int(lag_backward / decimate) + int(lag_forward / decimate)))
-    for i in range(1, lag_backward + 1, decimate):
-        X_output_3D[:, :, i] = X_3D[lag_backward - i:-lag_forward - i]
-    X_output_3D[:, :, int(lag_backward / decimate)] = X_3D[lag_backward:-lag_forward if lag_forward > 0 else None]  # cetntral point
-    for i in range(1, lag_forward + 1, decimate):
-        X_output_3D[:, :, i] = X_3D[lag_backward + i:-lag_forward + i if lag_forward - i > 0 else None]
+
+    output_samples = X_3D.shape[0] - lag_backward - lag_forward
+    channels = X_3D.shape[1]
+    feature_per_channel = X_3D.shape[2]
+    # TODO: CHECK IF ITS VALID
+    features_backward = int(lag_backward / decimate)
+    features_forward = int(lag_forward / decimate)
+    output_features = feature_per_channel * (1 + features_forward + features_backward)
+
+    X_output_3D = np.zeros((output_samples, channels, output_features))
+    feature_index = 0
+    for time_shift in range(decimate, lag_backward + decimate, decimate):
+        feature_slice = slice(feature_index, feature_index + feature_per_channel)
+        X_output_3D[:, :, feature_slice] = X_3D[lag_backward - time_shift:-lag_forward - time_shift]
+        feature_index += feature_per_channel
+
+    feature_slice = slice(feature_index, feature_index + feature_per_channel)
+    X_output_3D[:, :, feature_slice] = X_3D[lag_backward:-lag_forward if lag_forward > 0 else None]  # cetntral point
+    feature_index += feature_per_channel
+
+    for time_shift in range(decimate, lag_forward + decimate, decimate):
+        feature_slice = slice(feature_index, feature_index + feature_per_channel)
+        X_output_3D[:, :, feature_slice] = X_3D[lag_backward + time_shift:-lag_forward + time_shift if lag_forward - time_shift > 0 else None]
+        feature_index += feature_per_channel
+    assert feature_index == output_features
     return X_output_3D
 
 
 def final_lowpass_filtering(Y_predicted, frequency, lowpass_frequency=2):
-    b_lowpass_2Hz, a_lowpass_2Hz = scipy.signal.butter(4, Wn=lowpass_frequency, fs=frequency, btype='low')
+    b_lowpass_2Hz, a_lowpass_2Hz = scipy.signal.butter(4, Wn=lowpass_frequency * 1.0 / (frequency / 2), btype='low')
     Y_predicted_filtered = np.copy(Y_predicted)
     for i in range(Y_predicted.shape[1]):
         Y_predicted_filtered[:, i] = scipy.signal.filtfilt(b_lowpass_2Hz, a_lowpass_2Hz, Y_predicted[:, i])
@@ -44,8 +62,10 @@ def best_channels_greedy_search(X_train_3D, Y_train, X_val_3D, Y_val, max_number
     if max_number_of_channels is None:
         max_number_of_channels = X_train_3D.shape[1]
 
+    max_corr = -1
     while len(best_channels_list) < max_number_of_channels:
         current_channels_result = {}
+        current_best_correlation = -1
         for channel in set(range(X_train.shape[1])) - set(best_channels_list):
             current_best_channels =  best_channels_list + [channel]
             model = sklearn.linear_model.LinearRegression()
@@ -53,11 +73,43 @@ def best_channels_greedy_search(X_train_3D, Y_train, X_val_3D, Y_val, max_number
             Y_predicted = model.predict(make_flat(X_val_3D[:, current_best_channels, :]))
             test_corr = np.corrcoef(Y_predicted.reshape(1, -1), Y_val.reshape(1, -1))[0, 1]
             current_channels_result[channel] = test_corr
+            current_best_correlation = max(current_best_correlation, test_corr)
             print(f"Try add {channel} got {round(test_corr, 2)} correlation")
-        print(f"Current best {best_channels_list}")
-        best_channels_list.append(max(current_channels_result, key=current_channels_result.get))
-    print(f"Final best {best_channels_list}")
+        if current_best_correlation > max_corr:
+            best_channels_list.append(max(current_channels_result, key=current_channels_result.get))
+            max_corr = current_best_correlation
+        else:
+            break
+        print(f"Current best {best_channels_list} {max_corr}")
+    print(f"Final best {best_channels_list} {max_corr}")
     return best_channels_list
+
+
+def best_channels_greedy_search_fast(X_train_3D, Y_train, X_val_3D, Y_val, max_number_of_channels=None):
+    results = {}
+    for channel in range(X_train_3D.shape[1]):
+        model = sklearn.linear_model.LinearRegression()
+        model.fit(make_flat(X_train_3D[:, [channel], :]), Y_train)
+        Y_predicted = model.predict(make_flat(X_val_3D[:, [channel], :]))
+        test_corr = np.corrcoef(Y_predicted.reshape(1, -1), Y_val.reshape(1, -1))[0, 1]
+        print(f"Channel {channel}: {round(test_corr, 2)} correlation")
+        results[channel] = test_corr
+
+    best_channels_list = [i[0] for i in sorted(results.items(), key=lambda x: x[1], reverse=True)]
+
+    max_corr = -1
+    best_channels_combination = None
+    for channels_number in range(1, max_number_of_channels + 1):
+        model = sklearn.linear_model.LinearRegression()
+        model.fit(make_flat(X_train_3D[:, best_channels_list[:channels_number], :]), Y_train)
+        Y_predicted = model.predict(make_flat(X_val_3D[:, best_channels_list[:channels_number], :]))
+        test_corr = np.corrcoef(Y_predicted.reshape(1, -1), Y_val.reshape(1, -1))[0, 1]
+        if test_corr > max_corr:
+            best_channels_combination = best_channels_list[:channels_number]
+            max_corr = test_corr
+        print(f"Channes {best_channels_list[:channels_number]}: {round(test_corr, 2)} correlation")
+    print(f"best_channels_combination {best_channels_combination}")
+    return best_channels_combination
 
 
 ALPHA_RANGE = [20, 10, 7, 5, 4, 2, 1, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001, 0.0001]
