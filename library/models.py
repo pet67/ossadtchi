@@ -62,7 +62,7 @@ class Iterative2DRegressionModel(BenchModel):
         return Y_predicted_filtered
 
 
-class BaselineNet(BenchModel):
+class BaselineNetModel(BenchModel):
     def __init__(self, input_shape, output_shape, frequency, lag_backward, lag_forward):
         assert len(input_shape) == len(output_shape) == 1
         assert lag_backward >= 0
@@ -120,70 +120,80 @@ class BaselineNet(BenchModel):
 
 
 class LinearRegressionModel(BenchModel):
-    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration_mode, lag_backward, lag_forward, lag_decimate, mode):
-        assert mode in ["non_causal", "semi_causal", "causal"]
+    FEATURES_CREATOR = None
+    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration):
+        assert self.FEATURES_CREATOR != None
         self.frequency = frequency
         self.output_filtration = output_filtration
-        self.max_number_of_combinations = max_number_of_combinations
-        self.lag_backward = lag_backward
-        self.lag_forward = lag_forward
-        self.lag_decimate = lag_decimate
-        self.mode = mode
-        self.output_filtration_mode = output_filtration_mode
-        self.use_output_filtration = output_filtration
-
-    def get_features(X):
-        X_new = library.models_lib.common.get_narrowband_features_flat(X[:, self.best_channels_combination], self.frequency, self.mode)
-        if self.lag_backward > 0 or self.lag_forward > 0:
-            X_new = library.models_lib.common.make_lag(X_new, self.lag_backward, self.lag_forward, self.lag_decimate)
-        return X_new
-    
-    def check_use_output_filtration(self, X_val, Y_val):
-        Y_predicted_val = self.model.predict(self.get_features(X_val))
-        Y_predicted_filtered_val = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency, self.output_filtration_mode)
-        right_shift_without_final_filter = self.lag_foreward + library.models_lib.common.FETURES_SHIFT * int(self.mode != "non_causal") + HIGHPASS_SHIFT * int(self.mode == "causal")
-        right_shift = right_shift_without_final_filter + FINAL_FILTER_SHIFT * int(self.output_filtration_mode == "causal")
-
-        corr_val = np.corrcoef(Y_val[self.lag_backward:right_shift_without_final_filter], Y_predicted_val)[0, 1]
-        corr_val_filtered = np.corrcoef(Y_val[self.lag_backward:right_shift], Y_predicted_filtered_val)[0, 1]
-        self.use_output_filtration = corr_val_filtered > corr_val
+        self.max_number_of_channels = max_number_of_channels
+        
 
     def fit(self, X_train, Y_train, X_val, Y_val):
-        self.best_channels_combination = library.models_lib.common.get_best_channels_combination(X_train, Y_train, X_val, Y_val, self.frequency, self.output_filtration, self.max_number_of_combinations, self.mode)
-        X_train_new = self.get_features(X_train)
+        X_train_new = self.FEATURES_CREATOR(X_train, self.frequency)
+        X_val_new = self.FEATURES_CREATOR(X_val, self.frequency)
+        
+        Y_train = self.slice_target(Y_train)
+        Y_val = self.slice_target(Y_val)
+
+        self.best_channels_combination = library.models_lib.common.best_channels_greedy_search(X_train_new, Y_train, X_val_new, Y_val, self.max_number_of_combinations)
+
         self.model = sklearn.linear_model.LinearRegression()
-        self.model.fit(X_train_new, Y_train)
-        slef.check_use_output_filtration(X_val, Y_val)
+        self.model.fit(X_train_new[:, self.best_channels_combination], Y_train)
 
     def predict(self, X):
-        Y_predicted = self.model.predict(self.get_features(X))
-        if self.output_filtration_mode != "none":
-            Y_output = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency, self.output_filtration_mode)
+        X_new = self.FEATURES_CREATOR(X[:, self.best_channels_combination], self.frequency)
+        Y_predicted = self.model.predict(X_new)
+        if self.output_filtration:
+            Y_predicted_filtered = library.models_lib.common.final_lowpass_filtering(Y_predicted, self.frequency)
         else:
-            Y_output = Y_predicted
-        return Y_output
+            Y_predicted_filtered = Y_predicted
+        return Y_predicted_filtered
 
     def slice_target(self, Y):
-        return Y[left_shift:-right_shift if right_shift > 0 else None]
+        lag_backward = self.lag_backward if hasattr(self, "lag_backward") else 0
+        lag_forward = self.lag_forward if hasattr(self, "lag_forward") else 0
+        return Y[self.lag_backward:-self.lag_forward if self.lag_forward > 0 else None]
+
+
+class BandSpecificEcog(LinearRegressionModel):
+    FEATURES_CREATOR = library.models_lib.band_specific_ecog.get_band_features_with_lag_flat
+    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration, lag_backward, lag_forward, decimate, fir_taps, moving_average_window):
+        super(BandSpecificEcog, self).__init__()
+        self.lag_backward = lag_backward
+        self.lag_forward = lag_forward
+        self.lag_forward = decimate
+        self.fir_taps = fir_taps
+        self.moving_average_window = moving_average_window
+
+
+class NarrowBandEcog(LinearRegressionModel):
+    FEATURES_CREATOR = library.models_lib.narrow_band_ecog.get_narrowband_features_flat
+    def __init__(self, input_shape, output_shape, frequency, max_number_of_combinations, output_filtration):
+        super(NarrowBandEcog, self).__init__()
 
 
 class LinearRegressionWithRegularization(BenchModel):
     MODEL = None
-
+    FEATURES_CREATOR = None
     def __init__(self, input_shape, output_shape, frequency, output_filtration):
         assert self.MODEL is not None
+        assert self.FEATURES_CREATOR is not None
         self.frequency = frequency
         self.output_filtration = output_filtration
 
-
     def fit(self, X_train, Y_train, X_test, Y_test):
-        best_alpha = library.models_lib.common.get_best_alpha(X_train, Y_train, X_test, Y_test, self.frequency, self.MODEL, self.output_filtration)
+        X_train_new = self.FEATURES_CREATOR(X_train, self.frequency)
+        X_val_new = self.FEATURES_CREATOR(X_val, self.frequency)
+        
+        Y_train = self.slice_target(Y_train)
+        Y_val = self.slice_target(Y_val)
+        
+        best_alpha = library.models_lib.common.get_best_alpha(np.copy(X_train_new), np.copy(Y_train), X_val_new, Y_val, self.MODEL)
         self.model = self.MODEL(alpha=best_alpha, fit_intercept=True, normalize=True)
-        X_train_new = library.models_lib.common.get_narrowband_features_flat(X_train, self.frequency)
         self.model.fit(X_train_new, Y_train)
 
     def predict(self, X):
-        X_new = library.models_lib.common.get_narrowband_features_flat(X, self.frequency)
+        X_new = self.FEATURES_CREATOR(X[:, self.best_channels_combination], self.frequency)
         Y_predicted = self.model.predict(X_new)
         if len(Y_predicted.shape) == 1:
             Y_predicted = Y_predicted.reshape((-1, 1))  # Unexpectedly lasso returns (*,) dimension instead (*, 1)
@@ -192,6 +202,11 @@ class LinearRegressionWithRegularization(BenchModel):
         else:
             Y_predicted_filtered = Y_predicted
         return Y_predicted_filtered
+
+    def slice_target(self, Y):
+        lag_backward = self.lag_backward if hasattr(self, "lag_backward") else 0
+        lag_forward = self.lag_forward if hasattr(self, "lag_forward") else 0
+        return Y[self.lag_backward:-self.lag_forward if self.lag_forward > 0 else None]
 
 
 class RidgeRegressionModel(LinearRegressionWithRegularization):

@@ -14,6 +14,29 @@ FINGERS_RANGE_NAMES = [
     '41_Xrot', '44_Zrot', '49_Zrot', '53_Zrot', '57_Zrot'
 ]
 
+# Target index based on filename
+FILEINDEX2TARGET = {
+    1: 5,
+    2: 6,
+    3: 7,
+    4: 8,
+    5: 9,
+    6: 0,
+    7: 1,
+    8: 2,
+    9: 3,
+    10: 4
+}
+
+
+def filename2target(filname):
+    file_index = int(filname.split("_")[0])
+    return FILEINDEX2TARGET[file_index]
+
+
+def path2target(path):
+    return filename2target(path.split("/")[-1])
+
 
 def load_ecog_pn_mat(filepath):
     data = scipy.io.loadmat(filepath)

@@ -1,4 +1,5 @@
 import math
+import copy
 
 import numpy as np
 import scipy
@@ -7,27 +8,73 @@ import sklearn
 import sklearn.linear_model
 
 
-FILEINDEX2TARGET = {
-    1: 5,
-    2: 6,
-    3: 7,
-    4: 8,
-    5: 9,
-    6: 0,
-    7: 1,
-    8: 2,
-    9: 3,
-    10: 4
-}
+def make_flat(X_3D):
+    return X_3D.reshape(X_3D.shape[0], -1)
+
+def calculate_batches_number(x_size, total_lag, b_size):
+    return math.ceil((x_size - total_lag) / b_size)
 
 
-def filename2target(filname):
-    file_index = int(filname.split("_")[0])
-    return FILEINDEX2TARGET[file_index]
-    
+def make_lag_3D(X_3D, lag_backward, lag_forward, decimate=1):
+    assert decimate > 0
+    assert lag_backward >=0
+    assert lag_forward >=0
+    if lag_backward == 0 and lag_forward == 0:
+        return X_3D
+    X_output_3D = np.zeros(X.shape[0] - lag_backward - lag_forward, X.shape[1], X.shape[2] * (1 + int(lag_backward / decimate) + int(lag_forward / decimate)))
+    for i in range(1, lag_backward + 1, decimate):
+        X_output_3D[:, :, i] = X_3D[lag_backward - i:-lag_forward - i]
+    X_output_3D[:, :, int(lag_backward / decimate)] = X_3D[lag_backward:-lag_forward if lag_forward > 0 else None]  # cetntral point
+    for i in range(1, lag_forward + 1, decimate):
+        X_output_3D[:, :, i] = X_3D[lag_backward + i:-lag_forward + i if lag_forward - i > 0 else None]
+    return X_output_3D
 
-def path2target(path):
-    return filename2target(path.split("/")[-1])
+
+def final_lowpass_filtering(Y_predicted, frequency, lowpass_frequency=2):
+    b_lowpass_2Hz, a_lowpass_2Hz = scipy.signal.butter(4, Wn=lowpass_frequency, fs=frequency, btype='low')
+    Y_predicted_filtered = np.copy(Y_predicted)
+    for i in range(Y_predicted.shape[1]):
+        Y_predicted_filtered[:, i] = scipy.signal.filtfilt(b_lowpass_2Hz, a_lowpass_2Hz, Y_predicted[:, i])
+    assert Y_predicted.shape == Y_predicted_filtered.shape
+    return Y_predicted_filtered
+
+
+def best_channels_greedy_search(X_train_3D, Y_train, X_val_3D, Y_val, max_number_of_channels=None):
+    best_channels_list = []
+    if max_number_of_channels is None:
+        max_number_of_channels = X_train_3D.shape[1]
+
+    while len(best_channels_list) < max_number_of_channels:
+        current_channels_result = {}
+        for channel in set(range(X_train.shape[1])) - set(best_channels_list):
+            current_best_channels =  best_channels_list + [channel]
+            model = sklearn.linear_model.LinearRegression()
+            model.fit(make_flat(X_train_3D[:, current_best_channels, :]), Y_train)
+            Y_predicted = model.predict(make_flat(X_val_3D[:, current_best_channels, :]))
+            test_corr = np.corrcoef(Y_predicted.reshape(1, -1), Y_val.reshape(1, -1))[0, 1]
+            current_channels_result[channel] = test_corr
+            print(f"Try add {channel} got {round(test_corr, 2)} correlation")
+        print(f"Current best {best_channels_list}")
+        best_channels_list.append(max(current_channels_result, key=current_channels_result.get))
+    print(f"Final best {best_channels_list}")
+    return best_channels_list
+
+
+ALPHA_RANGE = [20, 10, 7, 5, 4, 2, 1, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001, 0.0001]
+def get_best_alpha(X_train, Y_train, X_test, Y_test, frequency, model_class):
+    max_corr = -1
+    best_alpha = None
+    for alpha in ALPHA_RANGE:
+        model = model_class(alpha=alpha, fit_intercept=True, normalize=True)
+        model.fit(X_train_new, Y_train)
+        Y_predicted = model.predict(X_test_new)
+        test_corr = np.corrcoef(Y_predicted_filtered.reshape(1, -1), Y_test.reshape(1, -1))[0, 1]
+        if test_corr > max_corr:
+            best_alpha = alpha
+            max_corr = test_corr
+        print(f"Alpha {alpha}: {round(test_corr, 2)} correlation")
+    print(f"best_alpha: {best_alpha}")
+    return best_alpha
 
 
 def data_generator(X, Y, b_size, lag_backward, lag_forward):
@@ -56,119 +103,3 @@ def data_generator(X, Y, b_size, lag_backward, lag_forward):
             yield (batch_x, batch_y)
         else:
             yield batch_x
-
-
-def make_lag(X, lag_backward, lag_forward, decimate=1):
-    assert decimate > 0
-    assert lag_backward >=0
-    assert lag_forward >=0
-    if lag_backward == 0 and lag_forward == 0:
-        return X
-    X_lag_list = [X[lag_backward:-lag_forward if lag_forward > 0 else None]]  # cetntral point
-    for i in range(1, lag_backward + 1, decimate):
-        X_lag_list.append(X[lag_backward - i:-lag_forward - i])
-    for i in range(1, lag_forward + 1, decimate):
-        X_lag_list.append(X[lag_backward + i:-lag_forward + i if lag_forward - i > 0 else None])
-    X_output = np.concatenate(X_lag_list, axis=1)
-    return X_output
-
-
-def final_lowpass_filtering(Y_predicted, frequency):
-    b_lowpass_2Hz, a_lowpass_2Hz = scipy.signal.butter(4, Wn=2 / (frequency / 2), btype='low')
-    Y_predicted_filtered = np.copy(Y_predicted)
-    for i in range(Y_predicted.shape[1]):
-        Y_predicted_filtered[:, i] = scipy.signal.filtfilt(b_lowpass_2Hz, a_lowpass_2Hz, Y_predicted[:, i])
-    assert Y_predicted.shape == Y_predicted_filtered.shape
-    return Y_predicted_filtered
-
-
-NumFIRTaps = 257
-F0 = [0.5, 1, 2, 3, 4] + list(range(5, 150, 5))
-NUMBER_OF_FILTERS_PER_CHANNEL = len(F0)
-CUTOFF_FREQUENCY_FOR_ABS_VALUES = 0.5
-def get_narrowband_features(X, frequency):
-    assert len(X.shape) == 2
-    assert X.shape[0] > X.shape[1]
-    b_hp_05, a_hp_05 = scipy.signal.butter(4, CUTOFF_FREQUENCY_FOR_ABS_VALUES / (frequency / 2), btype='high')
-
-    b = np.zeros((NUMBER_OF_FILTERS_PER_CHANNEL, NumFIRTaps))
-    for i, f in enumerate(F0):
-        b[i, :] = scipy.signal.firwin(NumFIRTaps, [0.9 * f / (frequency / 2), 1.1 * f / (frequency / 2)], pass_zero=False)
-
-    X_output = np.zeros((X.shape[0], X.shape[1], NUMBER_OF_FILTERS_PER_CHANNEL))
-    for channel in range(X.shape[1]):
-        for i in range(NUMBER_OF_FILTERS_PER_CHANNEL):
-            new_feature_signal = scipy.signal.filtfilt(b[i, :], [1], X[:, channel])
-            new_feature_signal = np.absolute(new_feature_signal)
-            new_feature_signal = scipy.signal.filtfilt(b_hp_05, a_hp_05, new_feature_signal)
-            X_output[:, channel, i] = new_feature_signal
-    return X_output
-
-
-def make_flat(X_3D):
-    return X_3D.reshape(X_3D.shape[0], -1)
-
-def get_narrowband_features_flat(X, frequency):
-    X_3D = get_narrowband_features(X, frequency)
-    return make_flat(X_3D)
-
-    
-def get_best_channels_combination(X_train, Y_train, X_test, Y_test, frequency, output_filtration, max_number_of_combinations):
-    print("Get best channels")
-    results = {}
-    X_train_new = get_narrowband_features(X_train, frequency)
-    X_test_new = get_narrowband_features(X_test, frequency)
-    for channel in range(X_train.shape[1]):
-        model = sklearn.linear_model.LinearRegression()
-        model.fit(make_flat(X_train_new[:, [channel], :]), Y_train)
-        Y_predicted = model.predict(make_flat(X_test_new[:, [channel], :]))
-        Y_predicted_filtered = final_lowpass_filtering(Y_predicted, frequency)
-        test_corr = np.corrcoef(Y_predicted_filtered.reshape(1, -1), Y_test.reshape(1, -1))[0, 1]
-        print(f"Channel {channel}: {round(test_corr, 2)} correlation")
-        results[channel] = test_corr
-
-    best_channels_list = [i[0] for i in sorted(results.items(), key=lambda x: x[1], reverse=True)]
-
-    max_corr = -1
-    best_channels_combination = None
-    for channels_number in range(1, max_number_of_combinations + 1):
-        model = sklearn.linear_model.LinearRegression()
-        model.fit(make_flat(X_train_new[:, best_channels_list[:channels_number], :]), Y_train)
-        Y_predicted = model.predict(make_flat(X_test_new[:, best_channels_list[:channels_number], :]))
-        if output_filtration:
-            Y_predicted_filtered = final_lowpass_filtering(Y_predicted, frequency)
-        else:
-            Y_predicted_filtered = Y_predicted
-        test_corr = np.corrcoef(Y_predicted_filtered.reshape(1, -1), Y_test.reshape(1, -1))[0, 1]
-        if test_corr > max_corr:
-            best_channels_combination = best_channels_list[:channels_number]
-            max_corr = test_corr
-        print(f"Channes {best_channels_list[:channels_number]}: {round(test_corr, 2)} correlation")
-    print(f"best_channels_combination {best_channels_combination}")
-    return best_channels_combination
-
-
-def get_best_alpha(X_train, Y_train, X_test, Y_test, frequency, model_class, output_filtration):
-    max_corr = -1
-    best_alpha = None
-    X_train_new = get_narrowband_features_flat(X_train, frequency)
-    X_test_new = get_narrowband_features_flat(X_test, frequency)
-    for alpha in [20, 10, 7, 5, 4, 2, 1, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001, 0.0001]:
-        model = model_class(alpha=alpha, fit_intercept=True, normalize=True)
-        model.fit(X_train_new, Y_train)
-        Y_predicted = model.predict(X_test_new)
-        if output_filtration:
-            Y_predicted_filtered = final_lowpass_filtering(Y_predicted, frequency)
-        else:
-            Y_predicted_filtered = Y_predicted
-        test_corr = np.corrcoef(Y_predicted_filtered.reshape(1, -1), Y_test.reshape(1, -1))[0, 1]
-        if test_corr > max_corr:
-            best_alpha = alpha
-            max_corr = test_corr
-        print(f"Alpha {alpha}: {round(test_corr, 2)} correlation")
-    print(f"best_alpha: {best_alpha}")
-    return best_alpha
-
-
-def calculate_batches_number(x_size, total_lag, b_size):
-    return math.ceil((x_size - total_lag) / b_size)
